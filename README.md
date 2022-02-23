@@ -29,7 +29,7 @@
 
 **Computed HTML** (CHTML) is a web development model in which the tags describing a complex layout are compiled in RAM, then passed to the browser's HTML interpreter to render in a single paint. 
 
-This program provides an introduction and practical demonstration of the Computed HTML model, which eschews build systems and MVC frameworks and templating engines and other externalities in favor of lightning fast, readable, maintainable code suitable for mission critical applications.
+This program provides a simple practical demonstration of the Computed HTML model, which eschews bloated and fragile externalities (MVC frameworks, templating engines, continuous integration, etc) in favor of lightning fast, readable, maintainable code suitable for mission critical applications.
 
 
 ## Algorithm
@@ -67,22 +67,24 @@ let innerHTML of gallery = array to string (chtml)
 
 ## Lorem Picsum 
 
-**[Lorem Picsum](https://picsum.photos/)** is a placeholder service, an API for fetching arbitrary pictures prescaled to arbitrary dimensions. 
+**[Lorem Picsum](https://picsum.photos/)** is a placeholder service, an API for fetching arbitrary pictures with arbitrary dimensions for demonstration purposes.
 
-The native aspect ratio of Picsum placeholders is very regular. The rendered matrix would look like a simple grid if we used them as-is. 
+It would not be practical to distribute an image database to demonstrate this CHTML algorithm, however, the native aspect ratio of Picsum placeholders is very regular. The rendered matrix would look like a grid instead of a brick wall, and you wouldn't need an algorithm to arrange them.
 
-```
-var images = [
-	[width, height],
-	..,
-	[width, height]
-];
-```
+In fact there are CSS-only strategies to the Masonry layout, but CSS is fragile and opaque. There are CSS-JS strategies, too, but they're an order of magnitude slower because they operate on a rendered DOM.
 
-The file `image-sizes.js` contains a list of the width and height of 128 random pictures from my database. We scale those dimensions to thumbnail size per the algorithm, then request a placeholder image from Picsum in place of the database image.
-
+The file `image-sizes.js` contains a list of the width and height of 128 random pictures from my own database. We scale those dimensions to thumbnail size per the algorithm, then request a placeholder image from Picsum in place of the database image.
 
 Placeholders are fetched in 'seed' mode, that is, for an arbitrary input, Picsum gives us an arbitrary placeholder, subject to the constraint that the same 'seed' value will always return the same output image. 
+
+It would be trivial to detect a high-density display and fetch a placeholder of double the computed width and height. The thumbnail would be rendered in high definition on most phones or tablets:
+
+`url('https://picsum.photos/seed/${ i+1 }/${
+	((devicePixelRatio > 1) ? img_width*2 : img_width)
+}/${
+	((devicePixelRatio > 1) ? img_height*2 : img_height)
+}')"`
+
 
 
 ## Errata
