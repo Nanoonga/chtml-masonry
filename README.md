@@ -42,23 +42,23 @@ let img width = (column width - margin)
 let column height[0 .. columns per row] = margin
 
 for each image i
-	for each column j
+
+	let j = i mod (column per row)
 		
-		left = offset of jth column
-		top = column height[j];
-		img height = (aspect ratio * img width)
+	left = offset of jth column
+	top = column height[j];
+	img height = (aspect ratio * img width)
 
-		chtml[i] = '<div class=brick style="
-				left:(left)px; 
-				top:(top)px; 
-				width:(img width)px; 
-				height:(img height)px; 
-				url(https://picsum.photos/seed/i/img_width/img_height");">
-			   </div>'
+	chtml[i] = '<div class=brick style="
+			left:(left)px; 
+			top:(top)px; 
+			width:(img width)px; 
+			height:(img height)px; 
+			url(https://picsum.photos/seed/i/img_width/img_height");">
+		   </div>'
 
-		let column height[j] += img height + margin
-
-	next column
+	let column height[j] += img height + margin
+	
 next image
 
 let innerHTML of gallery = array to string (chtml)
