@@ -20,7 +20,8 @@
 1. Clone or download the repo
 2. Open the chtml-masonry folder
 3. Drop the file masonry.html into your browser window
-4. Review the code and adapt it to your own purposes
+
+*"Absorb what is useful, discard what is not, add what is uniquely your own"* -- Bruce Lee
 
 ## Overview
 
@@ -28,7 +29,7 @@
 
 **Computed HTML** (CHTML) is a web development model in which the tags describing a complex layout are compiled in RAM, then passed to the browser's HTML interpreter to render in a single paint. 
 
-This program provides an introduction and practical demonstration of the Computed HTML model, which eschews build systems and MVC frameworks and templating engines and other externalities in favor of lightning fast, readable, maintainable code suitable for mission critical systems.
+This program provides an introduction and practical demonstration of the Computed HTML model, which eschews build systems and MVC frameworks and templating engines and other externalities in favor of lightning fast, readable, maintainable code suitable for mission critical applications.
 
 
 ## Algorithm
