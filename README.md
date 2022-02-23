@@ -18,8 +18,9 @@
 ## Quick Start
 
 1. Clone or download the repo
-2. open the chtml-masonry folder
-3. drop the file masonry.html into your browser window
+2. Open the chtml-masonry folder
+3. Drop the file masonry.html into your browser window
+4. Review the code and adapt it to your own purposes
 
 ## Overview
 
