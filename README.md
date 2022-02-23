@@ -10,6 +10,7 @@
 ## Features 
 
 * Time to Interactive < 1 second
+* Supports high-density displays
 * Responsive from 200 to 2000 density-independent pixels (dip)
 * Rerenders on window resize or orientation change
 * No dependencies
@@ -21,7 +22,7 @@
 2. Open the chtml-masonry folder
 3. Drop the file masonry.html into your browser window
 
-*"Absorb what is useful, discard what is not, add what is uniquely your own"* -- Bruce Lee
+
 
 ## Overview
 
@@ -29,7 +30,7 @@
 
 **Computed HTML** (CHTML) is a web development model in which the tags describing a complex layout are compiled in RAM, then passed to the browser's HTML interpreter to render in a single paint. 
 
-This program provides a simple practical demonstration of the Computed HTML model, which eschews bloated externalities (MVC frameworks, templating engines, continuous integration, etc) in favor of lightning fast, readable, maintainable code suitable for mission critical applications.
+This program provides a simple practical demonstration of the Computed HTML model, which eschews bloated externalities in favor of fast, readable, maintainable code suitable for lasting applications.
 
 
 ## Algorithm
