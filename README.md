@@ -18,8 +18,8 @@
 ## Quick Start
 
 1. Clone or download the repo
-2. open the chtml-mason folder
-3. drop the file mason.html into your browser window
+2. open the chtml-masonry folder
+3. drop the file masonry.html into your browser window
 
 **The Masonry layout** (also known as the Pinterest layout) is a matrix of elements separated by a constant margin, like bricks in a wall, but rotated 90 degrees so that it grows from the top down as new elements are added.
 
@@ -43,7 +43,14 @@ for each image i
 		top = column height[j];
 		img height = (aspect ratio * img width)
 
-		chtml[i] = '<div class=brick style="left:(left)px; top:(top)px; width:(img width)px; height:(img height)px; url(https://picsum.photos/seed/i/img_width/img_height");">'
+		chtml[i] = 
+		'<div class=brick 
+			style="left:(left)px; 
+			top:(top)px; 
+			width:(img width)px; 
+			height:(img height)px; 
+			url(https://picsum.photos/seed/i/img_width/img_height");">
+		</div>'
 
 		column height[j] += img height + margin
 
