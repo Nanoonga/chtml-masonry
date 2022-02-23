@@ -21,7 +21,7 @@
 2. open the chtml-masonry folder
 3. drop the file masonry.html into your browser window
 
-**The Masonry layout** (also known as the Pinterest layout) is a matrix of elements separated by a constant margin, like bricks in a wall, but rotated 90 degrees so that it grows from the top down as new elements are added.
+**The Masonry layout** (also known as the Pinterest layout) is a matrix of irregular elements separated by a constant margin, like bricks in a wall, but rotated 90 degrees so that it grows from the top down as new elements are added.
 
 **Computed HTML** (CHTML) is a web development model in which the tags describing a complex layout are compiled in RAM, then passed to the browser's HTML interpreter to render in a single paint. 
 
@@ -29,12 +29,12 @@
 ## Algorithm
 
 ```
-Const margin (px)
-var columns per row
-var column width
-var img width = (column width - margin)
+const margin (px)
+calc columns per row
+calc column width
+let img width = (column width - margin)
 
-Let column height[0 .. columns per row] = margin
+let column height[0 .. columns per row] = margin
 
 for each image i
 	for each column j
@@ -51,12 +51,12 @@ for each image i
 				url(https://picsum.photos/seed/i/img_width/img_height");">
 			   </div>'
 
-		column height[j] += img height + margin
+		let column height[j] += img height + margin
 
 	next column
 next image
 
-innerHTML of gallery = array to string (chtml)
+let innerHTML of gallery = array to string (chtml)
 ```
 
 ## Lorem Picsum 
