@@ -29,7 +29,7 @@
 
 **Computed HTML** (CHTML) is a web development model in which the tags describing a complex layout are compiled in RAM, then passed to the browser's HTML interpreter to render in a single paint. 
 
-This program provides a simple practical demonstration of the Computed HTML model, which eschews bloated and fragile externalities (MVC frameworks, templating engines, continuous integration, etc) in favor of lightning fast, readable, maintainable code suitable for mission critical applications.
+This program provides a simple practical demonstration of the Computed HTML model, which eschews bloated externalities (MVC frameworks, templating engines, continuous integration, etc) in favor of lightning fast, readable, maintainable code suitable for mission critical applications.
 
 
 ## Algorithm
@@ -71,7 +71,7 @@ let innerHTML of gallery = array to string (chtml)
 
 It would not be practical to distribute an image database to demonstrate this CHTML algorithm, however, the native aspect ratio of Picsum placeholders is very regular. The rendered matrix would look like a grid instead of a brick wall, and you wouldn't need an algorithm to arrange them.
 
-In fact there are CSS-only strategies to the Masonry layout, but CSS is fragile and opaque. There are CSS-JS strategies, too, but they're an order of magnitude slower because they operate on a rendered DOM.
+In fact there are CSS-only strategies to the Masonry layout, but CSS is fragile and nonobvious. There are CSS-JS strategies, too, but they're an order of magnitude slower because they operate on a rendered DOM.
 
 The CHTML strategy combines the speed of pure CSS with the control of pure JavaScript.
 
