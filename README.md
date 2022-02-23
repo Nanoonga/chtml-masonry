@@ -1,8 +1,8 @@
-# chtml-mason
+# chtml-masonry
 
 > A Computed HTML (CHTML) approach to the Masonry layout
 
-### G.L. Royal
+### Gary Royal
 
 ![screenshot](masonry.png)
 
@@ -78,10 +78,3 @@ Placeholders are fetched in 'seed' mode, that is, for an arbitrary input, Picsum
 Differences in average height per image per column (which varies with the number and length of columns) can create long stacks of elements surrounded by empty space at the bottom of the screen.
 
 I left them as-is because the solution requires a second compute pass to balance the columns by inserting spacers or rearranging pictures, but I haven't chosen a strategy. 
-
-
-## Bibliography
-
-https://ukmars.org/authors-guide/placeholder-images/
-
-
