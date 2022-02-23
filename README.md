@@ -79,11 +79,6 @@ The file `image-sizes.js` contains a list of the width and height of 128 random 
 
 Placeholders are fetched in 'seed' mode, that is, for an arbitrary input, Picsum gives us an arbitrary placeholder, subject to the constraint that the same 'seed' value will always return the same output image. 
 
-It would be trivial to detect a high-density display and fetch a placeholder of double the computed width and height. The thumbnail would be rendered in high definition on most phones or tablets:
-
-`url('https://picsum.photos/seed/${ i+1 }/${ ((devicePixelRatio > 1) ? img_width*2 : img_width) }/${ ((devicePixelRatio > 1) ? img_height*2 : img_height) }')"`
-
-
 
 ## Errata
 
