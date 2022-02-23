@@ -43,14 +43,13 @@ for each image i
 		top = column height[j];
 		img height = (aspect ratio * img width)
 
-		chtml[i] = 
-		'<div class=brick 
-			style="left:(left)px; 
-			top:(top)px; 
-			width:(img width)px; 
-			height:(img height)px; 
-			url(https://picsum.photos/seed/i/img_width/img_height");">
-		</div>'
+		chtml[i] = '<div class=brick style="
+				left:(left)px; 
+				top:(top)px; 
+				width:(img width)px; 
+				height:(img height)px; 
+				url(https://picsum.photos/seed/i/img_width/img_height");">
+			   </div>'
 
 		column height[j] += img height + margin
 
