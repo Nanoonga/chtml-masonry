@@ -73,17 +73,15 @@ It would not be practical to distribute an image database to demonstrate this CH
 
 In fact there are CSS-only strategies to the Masonry layout, but CSS is fragile and opaque. There are CSS-JS strategies, too, but they're an order of magnitude slower because they operate on a rendered DOM.
 
+The CHTML strategy combines the speed of pure CSS with the control of pure JavaScript.
+
 The file `image-sizes.js` contains a list of the width and height of 128 random pictures from my own database. We scale those dimensions to thumbnail size per the algorithm, then request a placeholder image from Picsum in place of the database image.
 
 Placeholders are fetched in 'seed' mode, that is, for an arbitrary input, Picsum gives us an arbitrary placeholder, subject to the constraint that the same 'seed' value will always return the same output image. 
 
 It would be trivial to detect a high-density display and fetch a placeholder of double the computed width and height. The thumbnail would be rendered in high definition on most phones or tablets:
 
-`url('https://picsum.photos/seed/${ i+1 }/${
-	((devicePixelRatio > 1) ? img_width*2 : img_width)
-}/${
-	((devicePixelRatio > 1) ? img_height*2 : img_height)
-}')"`
+`url('https://picsum.photos/seed/${ i+1 }/${ ((devicePixelRatio > 1) ? img_width*2 : img_width) }/${ ((devicePixelRatio > 1) ? img_height*2 : img_height) }')"`
 
 
 
