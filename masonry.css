@@ -1,0 +1,25 @@
+body {
+	margin:0;
+	padding:0;
+	background:black;
+	color:#ddd;
+	text-align:left;
+	vertical-align:top;
+}
+
+.brick {
+    position:absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color:#252525;
+}
+
+.brick-id {
+    margin:8px;
+    padding:4px;
+    background-color:black;
+    width:24px;
+    font-weight:bold;
+    text-align:center;
+ }
