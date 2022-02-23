@@ -89,6 +89,8 @@ function render_gallery() {
 
         img_width = (max_img_width > 192) ? 192 : max_img_width,
 
+        hi_def = (devicePixelRatio > 1),
+
         gallery_width = (img_width * columns_per_row) + total_gutter_width,
 
         left_offset = Math.floor((window_width - gallery_width) / 2),
@@ -124,9 +126,9 @@ function render_gallery() {
             }px;background-image:url('https://picsum.photos/seed/${
                 i+1
             }/${
-                img_width
+                ((hi_def) ? img_width * 2 : img_width )
             }/${
-                img_height
+                ((hi_def) ? img_height * 2 : img_height )
             }');"><div class="brick-id">${ i+1 }</div></div>`;
 
         column_height[j] += img_height + gutter_size;
