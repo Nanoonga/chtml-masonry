@@ -113,8 +113,6 @@ function render_gallery() {
 
         img_height = Math.round((images[i][1] / images[i][0]) * img_width, 0);
 
-        div_height = img_height + gutter_size;
-
         chtml[i] = `<div class="brick" style="top:${
                 column_height[j]
             }px;left:${
@@ -131,7 +129,7 @@ function render_gallery() {
                 img_height
             }');"><div class="brick-id">${ i+1 }</div></div>`;
 
-        column_height[j] += div_height;
+        column_height[j] += img_height + gutter_size;
     }
 
     document.getElementById('gallery').innerHTML = chtml.join('');
