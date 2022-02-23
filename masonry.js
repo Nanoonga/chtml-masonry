@@ -103,9 +103,7 @@ function render_gallery() {
 
         j,  // current column
 
-        img_height,
-
-        div_height;
+        img_height;
 
     column_height.fill(gutter_size); // start the wall with a row of mortar
 
@@ -137,12 +135,10 @@ function render_gallery() {
     document.getElementById('gallery').innerHTML = chtml.join('');
 }
 
-
 get_window_geometry();
 
 last_width = window_width;
 
 document.addEventListener("DOMContentLoaded", function(){
-
     render_gallery();
 });
