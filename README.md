@@ -21,9 +21,13 @@
 2. open the chtml-masonry folder
 3. drop the file masonry.html into your browser window
 
+## Overview
+
 **The Masonry layout** (also known as the Pinterest layout) is a matrix of irregular elements separated by a constant margin, like bricks in a wall, but rotated 90 degrees so that it grows from the top down as new elements are added.
 
 **Computed HTML** (CHTML) is a web development model in which the tags describing a complex layout are compiled in RAM, then passed to the browser's HTML interpreter to render in a single paint. 
+
+This program provides an introduction and practical demonstration of the Computed HTML model, which eschews build systems and MVC frameworks and templating engines and other externalities in favor of lightning fast, readable, maintainable code suitable for mission critical systems.
 
 
 ## Algorithm
