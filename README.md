@@ -24,11 +24,11 @@
 
 ## Overview
 
-**The Masonry layout** (also known as the Pinterest layout) is a matrix of irregular elements separated by a constant margin, like bricks in a wall, but rotated 90 degrees so that it grows from the top down as new elements are added.
+**The Masonry layout** (also known as the Pinterest layout) is a matrix of semi-regular elements separated by a constant margin, like bricks in a wall, but rotated 90 degrees so that it grows from the top down as new elements are added.
 
 **Computed HTML** (CHTML) is a web development model in which the tags describing a complex layout are compiled in RAM, then passed to the browser's HTML interpreter to render in a single paint. 
 
-This program provides a simple practical demonstration of the Computed HTML model, which eschews bloated externalities in favor of fast, readable, maintainable code suitable for lasting applications.
+This program provides a simple practical demonstration of the Computed HTML model, which eschews bloated externalities in favor of simple, readable, maintainable code suitable for high performance web applications.
 
 
 ## Algorithm
@@ -68,7 +68,7 @@ let innerHTML of gallery = array to string (chtml)
 
 **[Lorem Picsum](https://picsum.photos/)** is a placeholder service, an API for fetching arbitrary pictures with arbitrary dimensions for demonstration purposes.
 
-It would not be practical to distribute an image database to demonstrate this CHTML algorithm, however, the native aspect ratio of Picsum placeholders is very regular. Scaled to the original image dimensions, the rendered matrix would look like a grid instead of a brick wall, and it wouldn't be obvious how the algorithm works.
+It would not be practical to distribute an image database to demonstrate this CHTML algorithm, however, the native aspect ratio of Picsum placeholders is very regular. Scaled to the original image dimensions, the rendered matrix would look like a grid instead of a brick wall, and it wouldn't be obvious what the algorithm does.
 
 There are CSS-only strategies to the Masonry layout, but CSS is fragile and nonobvious. There are CSS-JS strategies, too, but they're an order of magnitude slower because they operate on a rendered DOM.
 
