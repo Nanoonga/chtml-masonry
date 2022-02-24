@@ -23,7 +23,6 @@
 3. Drop the file masonry.html into your browser window
 
 
-
 ## Overview
 
 **The Masonry layout** (also known as the Pinterest layout) is a matrix of irregular elements separated by a constant margin, like bricks in a wall, but rotated 90 degrees so that it grows from the top down as new elements are added.
@@ -45,10 +44,10 @@ let column height[0 .. columns per row] = margin
 
 for each image i
 
-	let j = i mod (column per row)
+	let j = i mod (columns per row)
 		
 	left = offset of jth column
-	top = column height[j];
+	top = column height[j]
 	img height = (aspect ratio * img width)
 
 	chtml[i] = '<div class=brick style="
@@ -56,8 +55,8 @@ for each image i
 			top:(top)px; 
 			width:(img width)px; 
 			height:(img height)px; 
-			url(https://picsum.photos/seed/i/img_width/img_height");">
-		   </div>'
+			url(https://picsum.photos/seed/i/img_width/img_height)">
+		</div>'
 
 	let column height[j] += img height + margin
 	
@@ -70,15 +69,15 @@ let innerHTML of gallery = array to string (chtml)
 
 **[Lorem Picsum](https://picsum.photos/)** is a placeholder service, an API for fetching arbitrary pictures with arbitrary dimensions for demonstration purposes.
 
-It would not be practical to distribute an image database to demonstrate this CHTML algorithm, however, the native aspect ratio of Picsum placeholders is very regular. The rendered matrix would look like a grid instead of a brick wall, and you wouldn't need an algorithm to arrange them.
+It would not be practical to distribute an image database to demonstrate this CHTML algorithm, however, the native aspect ratio of Picsum placeholders is very regular. Scaled to the original image dimensions, the rendered matrix would look like a grid instead of a brick wall, and it wouldn't be obvious how the algorithm works.
 
-In fact there are CSS-only strategies to the Masonry layout, but CSS is fragile and nonobvious. There are CSS-JS strategies, too, but they're an order of magnitude slower because they operate on a rendered DOM.
+There are CSS-only strategies to the Masonry layout, but CSS is fragile and nonobvious. There are CSS-JS strategies, too, but they're an order of magnitude slower because they operate on a rendered DOM.
 
 The CHTML strategy combines the speed of pure CSS with the control of pure JavaScript.
 
 The file `image-sizes.js` contains a list of the width and height of 128 random pictures from my own database. We scale those dimensions to thumbnail size per the algorithm, then request a placeholder image from Picsum in place of the database image.
 
-Placeholders are fetched in 'seed' mode, that is, for an arbitrary input, Picsum gives us an arbitrary placeholder, subject to the constraint that the same 'seed' value will always return the same output image. 
+Placeholders are fetched in 'seed' mode, that is, for an arbitrary input, Picsum gives us an arbitrary placeholder, subject to the constraint that the same seed value will always return the same image.
 
 
 ## Errata
