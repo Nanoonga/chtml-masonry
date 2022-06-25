@@ -28,7 +28,7 @@
 
 **Computed HTML** (CHTML) is a web development model in which the tags describing a complex layout are compiled in RAM, then passed to the browser's HTML interpreter to render in a single paint. 
 
-These listings provide a practical demonstration of the Computed HTML model by using it as a runtime for the photo layout algorithm. 
+These listings provide a practical demonstration of the Computed HTML model by using it as a runtime for the Masonry layout algorithm under development.  
 
 
 ## Algorithm
