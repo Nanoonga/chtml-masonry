@@ -11,7 +11,7 @@
 
 * Time to Interactive < 1 second
 * Supports high-density displays
-* Responsive from 200 to 2000 density-independent pixels (dip)
+* Responsive from 200 to 2000 density-independent pixels (dip) per row
 * No dependencies
 
 
