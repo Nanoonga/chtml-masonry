@@ -28,7 +28,7 @@
 
 **The Masonry layout** (also known as the Pinterest layout) is a matrix of semi-regular elements separated by a constant margin, like bricks in a wall, but rotated 90 degrees so that it grows from the top down as new elements are added.
 
-These listings provide a practical demonstration of the Computed HTML model by using it as a runtime for the Masonry layout algorithm. 
+These listings provide a practical demonstration of the Computed HTML model by using it as a runtime for the Masonry layout algorithm under development. 
 
 
 ## Algorithm
