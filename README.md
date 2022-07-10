@@ -72,7 +72,7 @@ It would not be practical to distribute an image database to demonstrate this CH
 
 The file `image-sizes.js` contains a list of the width and height of 128 random pictures from my own database. We scale those dimensions to thumbnail size per the algorithm, then request a placeholder image from Picsum in place of the original database image.
 
-There are CSS strategies to the Masonry layout. CSS is fast, but fragile and nonobvious. There are JS strategies, too, but they're orders of magnitude slower than CSS because they operate on an already-rendered DOM. 
+There are CSS strategies to the Masonry layout. CSS is fast, but fragile and nonobvious. There are JS strategies, too, but they're orders of magnitude slower than CSS because they manipulate the elements of an already-rendered DOM. 
 
 Computed HTML is a JS strategy that is almost as fast as CSS, because the browser's HTML interpreter is highly optimized for rendering DOMs from streams of HTML tags.
 
