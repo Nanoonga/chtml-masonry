@@ -137,10 +137,10 @@ function render_gallery() {
             }/${
                 ((hi_def) ? img_height * 2 : img_height )
             }');"><div class="brick-id">${ i+1 }</div></div>`;
-
+                
         column_height[j] += img_height + gutter_size;
     }
-
+    
     document.getElementById('gallery').innerHTML = chtml.join('');
 }
 
