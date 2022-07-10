@@ -74,7 +74,7 @@ The file `image-sizes.js` contains a list of the width and height of 128 random 
 
 There are CSS strategies to the Masonry layout. CSS is fast, but fragile and nonobvious. There are JS strategies, too, but they're orders of magnitude slower than CSS because they update the elements of a pre-rendered DOM. 
 
-Computed HTML is a JS strategy that is almost as fast as CSS, because the browser's HTML interpreter is highly optimized for rendering DOMs from streams of HTML tags that can be computed on the fly.
+Computed HTML is a JS strategy that is almost as fast as CSS, because the browser's HTML interpreter is optimized for rendering DOMs from streams of HTML tags that can be computed on the fly.
 
 Picsum placeholders are fetched in 'seed' mode, that is, for an arbitrary input, Picsum gives us an arbitrary placeholder, subject to the constraint that the same seed value will always return the same image.
 
