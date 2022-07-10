@@ -68,13 +68,13 @@ gallery.innerHTML = array to string (chtml)
 
 **[Lorem Picsum](https://picsum.photos/)** is a placeholder service, an API for fetching arbitrary pictures with arbitrary dimensions for demonstration purposes.
 
-It would not be practical to distribute an image database to demonstrate this CHTML algorithm. However, the native aspect ratio of Picsum placeholders is very regular; if scaled to their native image dimensions, the rendered matrix would look like a grid instead of a brick wall, and it wouldn't be obvious how the algorithm works.
+It would not be practical to distribute an image database to demonstrate this Masonry algorithm. However, the native aspect ratio of Picsum placeholders is very regular; if scaled to their original aspect ratio, the rendered matrix would look like a grid instead of a brick wall, and it wouldn't be obvious how the algorithm works.
 
 The file `image-sizes.js` contains a list of the width and height of 128 random pictures from my own database. We scale those dimensions to thumbnail size per the algorithm, then request a placeholder image from Picsum in place of the original database image.
 
-There are CSS strategies to the Masonry layout. CSS is fast, but fragile and nonobvious. There are JS strategies, too, but they're orders of magnitude slower than CSS because they update the elements of a pre-rendered DOM. 
+There are CSS strategies to the Masonry layout. CSS is fast, but fragile and nonobvious. There are JS strategies, too, but they're orders of magnitude slower than CSS because they manipulate the contents of a rendered DOM in situ. 
 
-Computed HTML is a JS strategy that is almost as fast as CSS, because the browser's HTML interpreter is optimized for rendering DOMs from streams of HTML tags that can be computed on the fly.
+Computed HTML is a JS strategy that is almost as fast as CSS, because the browser's HTML parser is optimized for rendering DOMs from streams of HTML tags, and because a suitable tag stream is easy to compute on the fly.
 
 Picsum placeholders are fetched in 'seed' mode, that is, for an arbitrary input, Picsum gives us an arbitrary placeholder, subject to the constraint that the same seed value will always return the same image.
 
