@@ -127,12 +127,12 @@ I left them as-is because the solution requires a second compute pass to balance
     
     <script>
 
-	    document.addEventListener("DOMContentLoaded", function(){
+	document.addEventListener("DOMContentLoaded", function(){
 
-	   		document.getElementById("gallery").innerHTML= [
-	   			'<h1>', greetings, '</h1>', '<hr>', 
-	   		].join('');
-		});
+		document.getElementById("gallery").innerHTML= [
+	   		'<h1>', greetings, '</h1>', '<hr>', 
+	   	].join('');
+	});
     
     </script>
 
