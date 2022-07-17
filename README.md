@@ -95,3 +95,50 @@ Picsum placeholders are fetched in 'seed' mode, that is, for an arbitrary input,
 Differences in average height per image per column often results in long runs of elements in some columns but not others. 
 
 I left them as-is because the solution requires a second compute pass to balance the columns by inserting spacers or rearranging pictures, but I haven't chosen a strategy. 
+
+
+## Exhibit 1 : Anatomy of a CHTML page
+
+```
+<?php
+
+	// jsvars can contain any executable javascript, but it's typically used
+	// to pass JSON-formatted query results from a database. 
+
+	$jsvars="var greetings='Hello World';";
+?>
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>    
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Computed HTML</title>
+
+	<link href="external.css" rel="stylesheet">	
+</head>
+
+<body>
+    <noscript>This page requires JavaScript.</noscript>
+
+    <script><?php print($jsvars);?></script>
+    
+    <script src="external.js"></script>   
+    
+    <script>
+
+	    document.addEventListener("DOMContentLoaded", function(){
+
+	   		document.getElementById("gallery").innerHTML= [
+	   			'<h1>', greetings, '</h1>', '<hr>', 
+	   		].join('');
+		});
+    
+    </script>
+
+  	<div id="gallery"></div>
+</body>
+
+</html>
+```
+
