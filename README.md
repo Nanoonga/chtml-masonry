@@ -30,9 +30,13 @@
 
 CSS solutions to the masonry layout are fast, but they're fragile and nonobvious. Conventional JS is orders of magnitude slower than CSS because it manipulates a rendered DOM in situ. 
 
-Computed HTML is a composition method that is almost as fast as CSS, because the browser's HTML interpreter is highly optimized for rendering DOMs from a stream of HTML tags. If the attributes of every tag are computed from variables at runtime, the parser never has to backtrack or repaint. 
+Computed HTML is almost as fast as CSS, because the browser's HTML interpreter is highly optimized for rendering DOMs from a stream of layout tags. If the attributes of every tag are computed from variables at runtime, the interpreter will never have to backtrack or repaint. 
 
-These listings provide a practical demonstration of the Computed HTML model by using it as a runtime for the Masonry layout algorithm under development. 
+### High Definition Displays
+
+Database images are downloaded at a multiple of the device pixel ratio if their width and height are large enough. This will show the sharpest renditions on all displays. 
+
+These listings demonstrate the Computed HTML model by using it as a runtime for the Masonry layout algorithm under development. 
 
 
 ## Algorithm
