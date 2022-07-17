@@ -28,6 +28,10 @@
 
 **The Masonry layout** (also known as the Pinterest layout) is a matrix of semi-regular elements separated by a constant margin, like bricks in a wall, but rotated 90 degrees so that it grows from the top down as new elements are added.
 
+CSS solutions to the masonry layout are fast, but they're fragile and nonobvious. Conventional JS is orders of magnitude slower than CSS because it manipulates a rendered DOM in situ. 
+
+Computed HTML is a composition method that is almost as fast as CSS, because the browser's HTML interpreter is highly optimized for rendering DOMs from a stream of HTML tags. If the attributes of every tag are computed from variables at runtime, the parser never has to backtrack or repaint. 
+
 These listings provide a practical demonstration of the Computed HTML model by using it as a runtime for the Masonry layout algorithm under development. 
 
 
@@ -71,10 +75,6 @@ gallery.innerHTML = array to string (chtml)
 It would not be practical to distribute an image database to demonstrate this Masonry algorithm. However, the native aspect ratio of Picsum placeholders is very regular; if scaled to their original aspect ratio, the rendered matrix would look like a grid instead of a brick wall, and it wouldn't be obvious how the algorithm works.
 
 The file `image-sizes.js` contains a list of the width and height of 128 random pictures from my own database. We scale those dimensions to thumbnail size per the algorithm, then request a placeholder image from Picsum in place of the original database image.
-
- * CSS solutions to the masonry layout are fast, but they're fragile and nonobvious. 
- * Conventional JS is orders of magnitude slower than CSS because it manipulates a rendered DOM in situ. 
- * Computed HTML is a JS strategy that is almost as fast as CSS, because the browser's HTML interpreter is highly optimized for rendering DOMs from a stream of HTML tags. Every attribute of every tag can be computed from variables at runtime, so the parser never has to backtrack or repaint. 
 
 Picsum placeholders are fetched in 'seed' mode, that is, for an arbitrary input, Picsum gives us an arbitrary placeholder, subject to the constraint that the same seed value will always return the same image.
 
