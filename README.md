@@ -135,8 +135,8 @@ I left them as-is because the solution requires a second compute pass to balance
 	});
     
     </script>
-
-  	<div id="gallery"></div>
+    
+    <div id="gallery"></div>
 </body>
 
 </html>
