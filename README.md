@@ -72,13 +72,16 @@ It would not be practical to distribute an image database to demonstrate this Ma
 
 The file `image-sizes.js` contains a list of the width and height of 128 random pictures from my own database. We scale those dimensions to thumbnail size per the algorithm, then request a placeholder image from Picsum in place of the original database image.
 
-There are CSS strategies to the Masonry layout. CSS is fast, but fragile and nonobvious. There are JS strategies, too, but they're orders of magnitude slower than CSS because they manipulate the DOM in situ. 
-
-Computed HTML is a JS strategy that is almost as fast as CSS, because a stream of HTML tags can be compiled in milliseconds, and the browser's HTML interpreter is optimized for parsing and rendering DOMs from such streams.
+ * CSS solutions to the masonry layout are fast, but they're fragile and nonobvious. 
+ * Conventional JS is orders of magnitude slower than CSS because it manipulates a rendered DOM in situ. 
+ * Computed HTML is a JS strategy that is almost as fast as CSS, because the browser's HTML interpreter is highly optimized for rendering DOMs from a stream of HTML tags. Every attribute of every tag can be computed from variables at runtime, so the parser never has to backtrack or repaint. 
 
 Picsum placeholders are fetched in 'seed' mode, that is, for an arbitrary input, Picsum gives us an arbitrary placeholder, subject to the constraint that the same seed value will always return the same image.
 
+## Working On
 
+ * Making the algorithm reentrant and implementing pagination / infinite scroll.
+ 
 ## Errata
 
 Differences in average height per image per column often results in long runs of elements in some columns but not others. 
