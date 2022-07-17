@@ -56,14 +56,15 @@ for each image i
 	left = offset of jth column
 	top = column height[j]
 	img height = (aspect ratio * img width)
-
-	chtml[i] = '<div class=brick style="
-			left:(left)px; 
-			top:(top)px; 
-			width:(img width)px; 
-			height:(img height)px; 
-			url(https://picsum.photos/seed/i/img_width/img_height)">
-		</div>'
+	quality = (images[i][width] >= devicePixelRatio * img_width) ? devicePixelRatio : 1
+	
+	html[i] = '<div class=brick style="
+		left:(left)px; 
+		top:(top)px; 
+		width:(quality * img width)px; 
+		height:(quality * img height)px; 
+		url(https://picsum.photos/seed/i/img_width/img_height)
+	"></div>'
 
 	let column height[j] += img height + margin
 	
