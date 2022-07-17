@@ -115,7 +115,10 @@ I left them as-is because the solution requires a second compute pass to balance
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>Computed HTML</title>
 
-	<link href="external.css" rel="stylesheet">	
+	<link href="library_styles.css" rel="stylesheet">
+	<style>
+		# local styles
+	</style>
 </head>
 
 <body>
@@ -123,7 +126,9 @@ I left them as-is because the solution requires a second compute pass to balance
 
     <script><?php print($jsvars);?></script>
     
-    <script src="external.js"></script>   
+    <script src="library_script.js"></script>
+    
+    <!-- local script -->
     
     <script>
 
