@@ -28,6 +28,9 @@
 
 **The Masonry layout** (also known as the Pinterest layout) is a matrix of semi-regular elements separated by a constant margin, like bricks in a wall, but rotated 90 degrees so that it grows from the top down as new elements are added.
 
+
+## Strategy
+
 CSS solutions to the masonry layout are fast, but they're fragile and nonobvious. Conventional JS is orders of magnitude slower than CSS because it manipulates a rendered DOM in situ. 
 
 Computed HTML is almost as fast as CSS, because the browser's HTML interpreter is highly optimized for rendering DOMs from a stream of layout tags. If the attributes of every tag are computed from variables at runtime, the interpreter will never have to backtrack or repaint. 
