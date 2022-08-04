@@ -33,15 +33,14 @@
 
 CSS solutions to the masonry layout are fast, but they're fragile and nonobvious. Conventional JS solutions are slow, because they manipulate an already-rendered DOM in situ. 
 
-Next to CSS, Computed HTML is the next-fastest layout strategy because 
-(a) the browser's HTML interpreter is highly optimized for rendering DOMs from a stream of layout tags, 
-(b) the attributes of every tag are known or computed in advance, therefore 
-(c) the interpreter will never have to backtrack or repaint. 
+After CSS, Computed HTML is the next-fastest layout strategy because (a) the browser's HTML interpreter is highly optimized for rendering DOMs from a stream of layout tags, and (b) the attributes of every tag are known or computed in advance, therefore (c) the interpreter will never have to backtrack or repaint. 
 
 
 ### High Definition Displays
 
-Database images are downloaded at a multiple of the device pixel ratio if their width and height are large enough. This will show the sharpest renditions on all displays. 
+Thumbnail images are fetched at a multiple of the device pixel ratio if their native width and height are large enough. This will show the sharpest rendition on all displays at all times. 
+
+Whether thumbnail details are worth their own bandwidth on a device with a pixel ratio > 2 is philosophical. Such densities are the result of Google not establishing a universal high-density standard for Android devices comparable to Apple's Retina, and bitmap assets up to 3x are provisioned even if some devices from some vendors have a greater device pixel ratio than that.
 
 These listings demonstrate the Computed HTML model by using it as a runtime for the Masonry layout algorithm under development. 
 
