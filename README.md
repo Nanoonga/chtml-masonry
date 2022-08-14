@@ -33,7 +33,7 @@
 
 CSS solutions to the masonry layout are fast, but they're fragile and unintuitive. Conventional JS solutions are intuitive but slow, because they manipulate an already-rendered DOM in situ. 
 
-After CSS, Computed HTML is the next-fastest layout strategy because (a) the browser's HTML interpreter is optimized for rendering DOMs from streams of layout tags, and (b) the attributes of every tag are known or computed in advance, therefore (c) the interpreter will never have to backtrack or repaint. 
+Next to CSS, Computed HTML is the next-fastest layout strategy because (a) the browser's HTML interpreter is optimized for rendering DOMs from streams of layout tags, and (b) the attributes of every tag are known or computed in advance, therefore (c) the interpreter will never have to backtrack or repaint. 
 
 
 ### High Definition Displays
@@ -117,7 +117,6 @@ I left them as-is because the solution requires a second compute pass to balance
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>Computed HTML</title>
-
 	<link href="library_styles.css" rel="stylesheet">
 	<style>
 		# local styles
