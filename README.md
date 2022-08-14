@@ -40,7 +40,7 @@ Next to CSS, Computed HTML is the next-fastest layout strategy because (a) the b
 
 Thumbnail images are fetched at a multiple of the device pixel ratio if their native width and height are large enough. This will show the sharpest rendition on all displays at all times. 
 
-Whether high-resolution thumbnails are worth their download bandwidth on devices with a pixel ratio > 2 is philosophical. For mobile devices, such densities are the result of Google's failure to define a graphics standard comparable to Apple's Retina. Google provisions bitmap assets up to 3x for Android even if some devices have a device pixel ratio greater than that.
+Whether high-resolution thumbnails are worth their download bandwidth on devices with a pixel ratio > 2 is philosophical. For mobile devices, such densities are the result of Google's failure to define a display standard comparable to Apple's Retina. Google provisions bitmap assets up to 3x for Android even if some devices have a device pixel ratio greater than that.
 
 These listings demonstrate the Computed HTML model by using it as a runtime for the Masonry layout algorithm under development. 
 
