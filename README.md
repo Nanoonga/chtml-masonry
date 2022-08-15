@@ -31,9 +31,12 @@
 
 ## Strategy
 
-CSS solutions to the masonry layout are fast, but they're fragile and unintuitive. Conventional JS solutions are slow, because they manipulate the nodes of an already-rendered DOM in situ. 
+CSS solutions to the masonry layout are fast, but they're fragile and nonobvious. Conventional JS solutions are slow, because they manipulate the nodes of a rendered DOM in situ. 
 
-Next to CSS, Computed HTML is the next-fastest layout strategy because (a) the browser's HTML interpreter is optimized for rendering DOMs from streams of layout tags, and (b) the attributes of every tag are known or computed in advance, therefore (c) the renderer will never have to backtrack or repaint. 
+Next to CSS, Computed HTML is the next fastest layout strategy because 
+* the browser is optimized for rendering DOMs from streams of tags, 
+* the attributes of every tag can be known or computed in advance, therefore
+* the renderer will never have to backtrack or repaint. 
 
 
 ### High Definition Displays
