@@ -41,7 +41,7 @@ Next to CSS, Computed HTML is the next fastest layout strategy because
 
 ### High Definition Displays
 
-Thumbnail images are fetched at a multiple of the device pixel ratio if `(display width * device pixel ratio) >= image width`.  
+Thumbnail images are fetched at a multiple of the device pixel ratio if `image width >= (display width * device pixel ratio)`.  
 
 This will show the sharpest rendition on all displays at all times. 
 
