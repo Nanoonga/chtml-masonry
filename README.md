@@ -1,6 +1,6 @@
 # chtml-masonry
 
-> A Computed HTML (CHTML) approach to the Masonry layout
+> A Computed HTML (CHTML) solution to the Masonry layout
 
 ### Gary Royal
 
@@ -9,10 +9,10 @@
 
 ## Features 
 
-* Time to Interactive < 1 second
-* Supports high-density displays
-* Responsive from 200 to 2000 density-independent pixels (dip) per row
-* No dependencies
+* Time to Interactive: instant
+* Infinite scroll
+* Auto-support for high density displays
+* Responsive from 200 to 2000 (density-independent pixels) viewport width
 
 
 ## Quick Start
@@ -31,23 +31,26 @@
 
 ## Strategy
 
-CSS solutions to the masonry layout are fast, but they're fragile and nonobvious. Conventional JS solutions are slow, because they manipulate the nodes of a rendered DOM in situ. 
+CSS solutions to the masonry layout are fragile but fast.
 
-Next to CSS, Computed HTML is the next fastest layout strategy because 
+Conventional JS solutions are robust but slow.
+
+Computed HTML is robust *and* fast, because
+
 * the browser is optimized for rendering DOMs from streams of tags, and
 * the attributes of every tag can be known or computed in advance, therefore
 * the renderer will never have to backtrack or repaint. 
 
+These listings demonstrate the Computed HTML model by using it as a runtime for the Masonry layout algorithm under development.
+
 
 ### High Definition Displays
 
-Thumbnail images are fetched at a multiple of the device pixel ratio if `image width >= (display width * device pixel ratio)`.  
+Thumbnail images are fetched at a multiple of the device pixel ratio if `device pixel ratio > 1 and image width >= (display width * device pixel ratio)`.  
 
-This will show the sharpest rendition on all displays at all times. 
+This will show the sharpest rendition on all displays. 
 
-Whether high-resolution thumbnails are worth their download bandwidth on devices with a pixel ratio > 2 is philosophical. For mobile devices, such densities are the result of Google's failure to define a display standard comparable to Apple's Retina. Google provisions bitmap assets up to 3x for Android even if some devices have a device pixel ratio greater than that.
-
-These listings demonstrate the Computed HTML model by using it as a runtime for the Masonry layout algorithm under development. 
+Whether high-resolution thumbnails are worth their download bandwidth on devices with a pixel ratio > 2 is philosophical. 
 
 
 ## Algorithm
@@ -62,8 +65,8 @@ let column height[0 .. columns per row] = margin
 
 for each image i
 
-	let j = i mod (columns per row)
-		
+	let j = index(minimum(column_height))
+	
 	left = offset of jth column
 	top = column height[j]
 	img height = (aspect ratio * img width)
@@ -81,76 +84,26 @@ for each image i
 	
 next image
 
-gallery.innerHTML = array to string (chtml)
+let new div = array to string(chtml)
+append div to #gallery
 ```
 
 ## Lorem Picsum 
 
 **[Lorem Picsum](https://picsum.photos/)** is a placeholder service, an API for fetching arbitrary pictures with arbitrary dimensions for demonstration purposes.
 
-It would not be practical to distribute an image database to demonstrate this Masonry algorithm. However, the native aspect ratio of Picsum placeholders is very regular; if scaled to their original aspect ratio, the rendered matrix would look like a grid instead of a brick wall, and it wouldn't be obvious how the algorithm works.
+It is used in place of distributing an image database with this repo.
 
-The file `image-sizes.js` contains a list of the width and height of 128 random pictures from my own database. We scale those dimensions to thumbnail size per the algorithm, then request a placeholder image from Picsum in place of the original database image.
+`shapefile.js` is a list of picture dimensions extracted from my own database of user-uploaded photos. Those dimensions are applied to the picsum request to download photos at irregular but realistic proportions to demonstrate the masonry effect. 
 
 Picsum placeholders are fetched in 'seed' mode, that is, for an arbitrary seed value, Picsum returns an arbitrary placeholder, subject to the constraint that the same seed will always return the same image.
 
-## Working On
 
- * Making the algorithm reentrant and implementing pagination / infinite scroll.
+## Lozad.js
+
+**[Lozad.js](https://github.com/ApoorvSaxena/lozad.js)** is an observer-based lazy loader for images. It is optional, but it allows the layout algorithm to run as fast as the user can scroll. 
+
+
  
-## Errata
 
-Differences in average height per image per column often results in long runs of elements in some columns but not others. 
-
-I left them as-is because the solution requires a second compute pass to balance the columns by inserting spacers or rearranging pictures, but I haven't chosen a strategy. 
-
-
-## Exhibit 1 : Anatomy of a CHTML page
-
-```
-<?php
-
-	// jsvars can contain any executable javascript, but it's typically used
-	// to pass JSON-formatted query results from a database. 
-
-	$jsvars="var greetings='Hello World';";
-?>
-<!DOCTYPE html>
-<html lang="en-US">
-
-<head>    
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Computed HTML</title>
-	<link href="library_styles.css" rel="stylesheet">
-	<style>
-		# local styles
-	</style>
-</head>
-
-<body>
-    <noscript>This page requires JavaScript.</noscript>
-
-    <script><?php print($jsvars);?></script>
-    
-    <script src="library_script.js"></script>
-    
-    <!-- local script -->
-    
-    <script>
-
-	document.addEventListener("DOMContentLoaded", function(){
-
-		document.getElementById("gallery").innerHTML= [
-	   		'<h1>', greetings, '</h1>', '<hr>', 
-	   	].join('');
-	});
-    
-    </script>
-    
-    <div id="gallery"></div>
-</body>
-
-</html>
-```
 
