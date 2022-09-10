@@ -1,8 +1,11 @@
 # chtml-masonry
 
-> A Computed HTML (CHTML) solution to the Masonry layout
+### by Gary Royal
 
-### Gary Royal
+**Computed HTML** (CHTML) is a programming model in which the tags describing a complex layout are compiled in RAM, then passed to the browser's HTML interpreter to render in a single paint. CHTML is orders of magnitude faster than conventional Dynamic HTML, which manipulates the nodes of a rendered DOM in situ.  
+
+**The Masonry layout** (also known as the Pinterest layout) is a matrix of semi-regular elements separated by a constant margin, like bricks in a wall, but rotated 90 degrees so that it grows from the top down as new elements are added.
+
 
 ![screenshot](masonry.png)
 
@@ -24,16 +27,7 @@
 
 ## Overview
 
-**Computed HTML** (CHTML) is a programming model in which the tags describing a complex layout are compiled in RAM, then passed to the browser's HTML interpreter to render in a single paint. 
-
-**The Masonry layout** (also known as the Pinterest layout) is a matrix of semi-regular elements separated by a constant margin, like bricks in a wall, but rotated 90 degrees so that it grows from the top down as new elements are added.
-
-
-## Strategy
-
-CSS solutions to the masonry layout are fragile but fast.
-
-Conventional JS solutions are robust but slow.
+CSS solutions to the masonry layout are fragile but fast; conventional JS solutions are robust but slow.
 
 Computed HTML is robust *and* fast, because
 
@@ -102,8 +96,3 @@ Picsum placeholders are fetched in 'seed' mode, that is, for an arbitrary seed v
 ## Lozad.js
 
 **[Lozad.js](https://github.com/ApoorvSaxena/lozad.js)** is an observer-based lazy loader for images. It is optional, but it allows the layout algorithm to run as fast as the user can scroll. 
-
-
- 
-
-
