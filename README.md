@@ -1,21 +1,24 @@
 # chtml-masonry
 
-### by Gary Royal
+#### Gary Royal
+
+##Abstract
 
 **Computed HTML** (CHTML) is a programming model in which the tags describing a complex layout are compiled in RAM, then passed to the browser's HTML interpreter to render in a single paint. CHTML is orders of magnitude faster than conventional Dynamic HTML, which manipulates the nodes of a rendered DOM in situ.  
 
 **The Masonry layout** (also known as the Pinterest layout) is a matrix of semi-regular elements separated by a constant margin, like bricks in a wall, but rotated 90 degrees so that it grows from the top down as new elements are added.
 
+These listings demonstrate the Computed HTML model by using it as a runtime for the Masonry layout algorithm under development.
 
 ![screenshot](masonry.png)
 
 
 ## Features 
 
-* Time to Interactive: instant
+* Time to Interactive: instant (< 500 ms)
 * Infinite scroll
 * Auto-support for high density displays
-* Responsive from 200 to 2000 (density-independent pixels) viewport width
+* Responsive from 200 to 2000 pixels viewport width
 
 
 ## Quick Start
@@ -27,15 +30,13 @@
 
 ## Overview
 
-CSS solutions to the masonry layout are fragile but fast; conventional JS solutions are robust but slow.
+CSS solutions to the masonry layout are fragile but fast; conventional JS solutions are robust but slow. 
 
 Computed HTML is robust *and* fast, because
 
 * the browser is optimized for rendering DOMs from streams of tags, and
 * the attributes of every tag can be known or computed in advance, therefore
 * the renderer will never have to backtrack or repaint. 
-
-These listings demonstrate the Computed HTML model by using it as a runtime for the Masonry layout algorithm under development.
 
 
 ### High Definition Displays
