@@ -2,7 +2,7 @@
 
 #### Gary Royal
 
-##Abstract
+## Abstract
 
 **Computed HTML** (CHTML) is a programming model in which the tags describing a complex layout are compiled in RAM, then passed to the browser's HTML interpreter to render in a single paint. CHTML is orders of magnitude faster than conventional Dynamic HTML, which manipulates the nodes of a rendered DOM in situ.  
 
