@@ -1,7 +1,4 @@
-# chtml-masonry
-
-## A Computed HTML (CHTML) solution to the Masonry layout
-
+# A Computed HTML (CHTML) solution to the Masonry layout
 #### Gary Royal
 
 ## Abstract
