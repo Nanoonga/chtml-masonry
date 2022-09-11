@@ -11,14 +11,14 @@
 
 **The Masonry layout** (also known as the Pinterest layout) is a matrix of semi-regular elements separated by a constant margin, like bricks in a wall, but rotated 90 degrees so that it grows from the top down as new elements are added.
 
-These listings demonstrate the Computed HTML model by using it as a runtime for the Masonry layout algorithm under development.
+These listings demonstrate the Computed HTML model by using it as a runtime for the Masonry layout algorithm below.
 
 
 ## Features 
 
 * Time to Interactive: instant (< 500 ms)
 * Infinite scroll
-* Supports high density (Retina/4K UHD) displays
+* Supports UHD 4K and Retina displays
 * Responsive from 200 to 2000 pixels viewport width
 
 
@@ -33,7 +33,7 @@ These listings demonstrate the Computed HTML model by using it as a runtime for 
 
 Computed HTML uses the innerHTML function to parse and render an arbitrarily complex layout inserted anywhere within a skeletal DOM. The layout is assembled using JavaScript with every necessary attribute compiled inline. 
 
-These attributes may be drawn from cookies, variables, hardcoded data, XMLHttp requests, or the environment the code is executing in (such as device-specific features and display geometry).  
+These attributes may be drawn from cookies, variables, hardcoded data, XMLHttp requests, or the environment the code is executing in (such as the current viewport geometry).  
 
 ```
 <body>
@@ -50,7 +50,7 @@ script.js:
    });
 ```
 
-## Masonry algorithm
+## Masonry layout algorithm
 
 ```
 const margin (px)
@@ -87,7 +87,7 @@ gallery.innerHTML += array to string(chtml)
 
 ## High Definition Displays
 
-Thumbnail images are fetched at a multiple of the device pixel ratio if `device pixel ratio > 1 and image width >= (display width * device pixel ratio)`.  
+Thumbnail images are fetched at a multiple of the device pixel ratio if `device pixel ratio > 1` and `image width >= (display width * device pixel ratio)`.  
 
 This will show the sharpest rendition on all displays. 
 
@@ -108,3 +108,5 @@ Picsum placeholders are fetched in 'seed' mode, that is, for an arbitrary seed v
 ## Lozad.js
 
 **[Lozad.js](https://github.com/ApoorvSaxena/lozad.js)** is an observer-based lazy loader for images. It is optional, but it allows the layout algorithm to run as fast as the user can scroll. 
+
+
