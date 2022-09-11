@@ -3,6 +3,8 @@
 
 #### Gary Royal
 
+![screenshot](masonry.png)
+
 ## Overview
 
 **Computed HTML** (CHTML) is a programming model in which the tags describing a complex layout are compiled in RAM, then passed to the browser's HTML interpreter to render in a single paint. 
@@ -10,8 +12,6 @@
 **The Masonry layout** (also known as the Pinterest layout) is a matrix of semi-regular elements separated by a constant margin, like bricks in a wall, but rotated 90 degrees so that it grows from the top down as new elements are added.
 
 These listings demonstrate the Computed HTML model by using it as a runtime for the Masonry layout algorithm under development.
-
-![screenshot](masonry.png)
 
 
 ## Features 
