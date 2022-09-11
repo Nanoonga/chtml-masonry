@@ -29,7 +29,7 @@ These listings demonstrate the Computed HTML model by using it as a runtime for 
 3. Drop the file masonry.html into your browser window
 
 
-## Overview
+## Computed HTML 
 
 Computed HTML uses the innerHTML function to parse and render an arbitrarily complex layout inserted anywhere within a skeletal DOM. The layout is assembled using JavaScript with every necessary attribute compiled inline. 
 
@@ -37,20 +37,20 @@ These attributes may be drawn from cookies, variables, hardcoded data, XMLHttp r
 
 ```
 <body>
-	<link href="style.css">
-	<script href="script.js">
-	<div id="greeting"></div>
+   <link href="style.css">
+   <script href="script.js">
+   <div id="greeting"></div>
 </body>
 
 script.js:
-	document.addEventListener("DOMContentLoaded", function(){
-		document.getElementById("greeting").innerHTML = [
-			'<p>Hello, World</p>',
-		].join('');
-	});
+   document.addEventListener("DOMContentLoaded", function(){
+      document.getElementById("greeting").innerHTML = [
+         '<p>Hello, World</p>',
+      ].join('');
+   });
 ```
 
-## Algorithm
+## Masonry algorithm
 
 ```
 const margin (px)
@@ -85,7 +85,7 @@ gallery.innerHTML += array to string(chtml)
 ```
 
 
-### High Definition Displays
+## High Definition Displays
 
 Thumbnail images are fetched at a multiple of the device pixel ratio if `device pixel ratio > 1 and image width >= (display width * device pixel ratio)`.  
 
