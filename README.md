@@ -31,27 +31,24 @@ These listings demonstrate the Computed HTML model by using it as a runtime for 
 
 ## Overview
 
-Computed HTML is orders of magnitude faster than conventional Dynamic HTML (DHTML) because it instructs the browser's HTML interpreter to construct a new DOM instead of manipulating the nodes of a rendered DOM in situ. 
+Computed HTML uses the innerHTML function to parse and render an arbitrarily complex layout inserted anywhere within a skeletal DOM. The layout is assembled using JavaScript with every necessary attribute compiled inline. 
+
+These attributes may be drawn from cookies, variables, hardcoded data, XMLHttp requests, or the environment the code is executing in (such as device-specific features and display geometry).  
 
 ```
-	document.getElementById('greeting').innerHTML = [
-		'<p>Hello, World</p>',
-	].join('');
+<body>
+	<link href="style.css">
+	<script href="script.js">
+	<div id="greeting"></div>
+</body>
+
+script.js:
+	document.addEventListener("DOMContentLoaded", function(){
+		document.getElementById("greeting").innerHTML = [
+			'<p>Hello, World</p>',
+		].join('');
+	});
 ```
-
-* the browser is optimized for rendering DOMs from streams of tags, and
-* the attributes of every tag can be known or computed in advance, therefore
-* the renderer will never have to backtrack or repaint. 
-
-
-### High Definition Displays
-
-Thumbnail images are fetched at a multiple of the device pixel ratio if `device pixel ratio > 1 and image width >= (display width * device pixel ratio)`.  
-
-This will show the sharpest rendition on all displays. 
-
-Whether high-resolution thumbnails are worth their download bandwidth on devices with a pixel ratio > 2 is philosophical. 
-
 
 ## Algorithm
 
@@ -72,7 +69,7 @@ for each image i
 	img height = (aspect ratio * img width)
 	quality = (images[i][width] >= devicePixelRatio * img_width) ? devicePixelRatio : 1
 	
-	html[i] = '<div class=brick style="
+	chtml[i] = '<div class=brick style="
 		left:(left)px; 
 		top:(top)px; 
 		width:(quality * img width)px; 
@@ -84,9 +81,18 @@ for each image i
 	
 next image
 
-let new div = array to string(chtml)
-append div to #gallery
+gallery.innerHTML += array to string(chtml)
 ```
+
+
+### High Definition Displays
+
+Thumbnail images are fetched at a multiple of the device pixel ratio if `device pixel ratio > 1 and image width >= (display width * device pixel ratio)`.  
+
+This will show the sharpest rendition on all displays. 
+
+Whether high-resolution thumbnails are worth their download bandwidth on devices with a pixel ratio > 2 is philosophical. 
+
 
 ## Lorem Picsum 
 
