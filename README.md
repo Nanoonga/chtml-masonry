@@ -18,7 +18,7 @@ These listings demonstrate the Computed HTML model by using it as a runtime for 
 
 * Time to Interactive: instant (< 500 ms)
 * Infinite scroll
-* Auto-support for high density displays
+* Supports high density (Retina/4K UHD) displays
 * Responsive from 200 to 2000 pixels viewport width
 
 
@@ -31,7 +31,7 @@ These listings demonstrate the Computed HTML model by using it as a runtime for 
 
 ## Overview
 
-Computed HTML is orders of magnitude faster than conventional Dynamic HTML (DHTML) because it instructs the browser's HTML interpreter to construct a new DOM instead of manipulating the nodes of a rendered DOM in situ.
+Computed HTML is orders of magnitude faster than conventional Dynamic HTML (DHTML) because it instructs the browser's HTML interpreter to construct a new DOM instead of manipulating the nodes of a rendered DOM in situ. 
 
 `document.getElementById('greeting').innerHTML = [`\
 `'<p>Hello, World</p>',`\
