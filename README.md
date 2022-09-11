@@ -33,8 +33,8 @@ These listings demonstrate the Computed HTML model by using it as a runtime for 
 
 Computed HTML is orders of magnitude faster than conventional Dynamic HTML (DHTML) because it instructs the browser's HTML interpreter to construct a new DOM instead of manipulating the nodes of a rendered DOM in situ.
 
-`document.getElementById('greeting').innerHTML = [`\\
-`'<p>Hello, World</p>',`\\
+`document.getElementById('greeting').innerHTML = [`\
+`'<p>Hello, World</p>',`\
 `].join('');`
 
 * the browser is optimized for rendering DOMs from streams of tags, and
