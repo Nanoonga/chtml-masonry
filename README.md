@@ -17,10 +17,10 @@ These listings demonstrate the Computed HTML model by using it as a runtime for 
 ## Features 
 
 * Time to Interactive: instant 
-* Mobile ready
-* Infinite scroll
 * Supports high density displays
 * Responsive from 200 to 2000 pixels viewport width
+* Infinite scroll
+* Mobile ready
 
 
 ## Quick Start
