@@ -96,11 +96,11 @@ image:url('https://picsum.photos/seed/30/384/576');">
 
 ## High Definition Displays
 
-Whether high-resolution thumbnails are worth their download bandwidth on devices with a device pixel ratio > 2 is philosophical[1].
+Whether high-resolution thumbnails are worth their download bandwidth on devices with a device pixel ratio > 2 is [philosophical](https://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html).
 
-Thumbnail images (tiles) are fetched at a multiple of the device pixel ratio if `device pixel ratio > 1` and `image width >= (display width * device pixel ratio)`.  
+By default, thumbnail images (tiles) are fetched at a multiple of the device pixel ratio if `device pixel ratio > 1` and `image width >= (display width * device pixel ratio)`.  
 
-This will show the sharpest rendition on all displays. 
+This will show the sharpest rendition on all displays at all window sizes. 
 
 Some devices have noninteger device pixel ratios, like 2.25 or 3.5. The rounded device pixel ratio is the floor of the device pixel ratio, such as 1, 2, 3, or 4.
 
@@ -117,8 +117,6 @@ If you're indifferent or unsure that tiles up to 4*x* on a mobile device are wor
 If you don't want high density thumbnails on mobile at all, set the constant `enable_mobile_hd = false`. This will download all thumbnails at 1*x*.
 
 These constants should have no effect on desktop browsers, which are assumed to have cheap and plentiful bandwidth.
-***
-[1] [More about devicePixelRatio](https://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html)
 
 
 ## Lorem Picsum 
