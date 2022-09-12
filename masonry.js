@@ -184,15 +184,9 @@ function auto_paginate() {
                     }px;background-image:url('https://picsum.photos/seed/${
                         photo_counter
                     }/${
-<<<<<<< HEAD
                         tile_width
                     }/${
                         tile_height
-=======
-                        alt_max_width
-                    }/${
-                        Math.round((images[i][1] / images[i][0]) * alt_max_width, 0)
->>>>>>> origin/master
                     }');"><div class="brick-id">${ 
                         photo_counter + ((q) ? '&nbsp;' + r + 'x' : '') 
                     }</div></div>`;
