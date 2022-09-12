@@ -94,15 +94,9 @@ const last_width = viewport_width,
 
     max_img_width = (Math.floor((viewport_width - total_gutter_width) / columns_per_row) * 4) / 4,
 
-<<<<<<< HEAD
-    alt_max_width = 192, 
-
-    img_width = (max_img_width >= alt_max_width) ? alt_max_width : max_img_width,
-=======
     alt_max_width = 192, // 
 
-    img_width = (max_img_width > 192) ? 192 : max_img_width,
->>>>>>> origin/master
+    img_width = (max_img_width >= alt_max_width) ? alt_max_width : max_img_width,
 
     gallery_width = (img_width * columns_per_row) + total_gutter_width,
 
@@ -115,7 +109,7 @@ const last_width = viewport_width,
 
 var page_number = 0, 
 
-    page_length = 64, 
+    page_length = 48, 
 
 //    page_length = (page_length % columns_per_row > 0) ? Math.ceil(page_length / columns_per_row) : page_length,
 
