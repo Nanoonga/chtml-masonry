@@ -110,7 +110,7 @@ Mobile screens (and desktop browser windows) > 400 px use a fixed tile size for 
 
 ### Mobile considerations 
 
-On mobile screens < 400 px wide, the tile size will be different in portrait mode than landscape. This will cause a second rendition of the thumbnail to be downloaded. It might be a waste of bandwidth, but it's not a bug.
+On mobile screens < 400 px wide, the tile size will be different in portrait mode than landscape. This will cause a second rendition of the thumbnail to be downloaded when the device is rotated. It might be a waste of bandwidth, but it's not a bug.
 
 If you're indifferent or unsure that tiles up to 4*x* on a mobile device are worthwhile, set the constant `prefer_retina = true`. This will download at a maximum 2*x* even if the device's rounded device pixel ratio is higher. 
 
