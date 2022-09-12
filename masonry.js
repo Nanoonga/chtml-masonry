@@ -25,7 +25,7 @@ function $(el) {
 
 function get_window_geometry() {
 
-    viewport_width = function() {
+    window_width = function() {
         var x = 0;
         if (self.innerHeight) {
             x = self.innerWidth;
@@ -37,7 +37,7 @@ function get_window_geometry() {
         return x;
     }(),
 
-    viewport_height = function() {
+    window_height = function() {
         var y = 0;
         if (self.innerHeight) {
             y = self.innerHeight;
@@ -70,40 +70,48 @@ function get_window_geometry() {
         return scrollbar_width;
     }();
 
-    window_width = viewport_width - scrollbar_width;
+    viewport_width = window_width - scrollbar_width;
 };
 
 get_window_geometry();
 
 
-const last_width = window_width,
+const last_width = viewport_width,
+
+    mobile = navigator.userAgent.toLowerCase().match(/mobile/i),
+    
+    enable_mobile_hd = true, // if you want HD thumbnails on mobile
+
+    prefer_retina = false, // if you want to limit mobile HD to 2x  
 
     responsive_columns = [0,0,2,2,2,2,3,3,4,4,5,5,5,5,6,6,7,7,8,8,9],
 
-    columns_per_row = responsive_columns[Math.floor(window_width / 100)],
+    columns_per_row = responsive_columns[Math.floor(viewport_width / 100)],
 
     gutter_size = 8,
 
     total_gutter_width = (columns_per_row + 1) * gutter_size,
 
-    max_img_width = (Math.floor((window_width - total_gutter_width) / columns_per_row) * 4) / 4,
+    max_img_width = (Math.floor((viewport_width - total_gutter_width) / columns_per_row) * 4) / 4,
 
-    alt_max_width = 192, // 
+    alt_max_width = 192, 
 
-    img_width = (max_img_width > 192) ? 192 : max_img_width,
+    img_width = (max_img_width >= alt_max_width) ? alt_max_width : max_img_width,
 
     gallery_width = (img_width * columns_per_row) + total_gutter_width,
 
-    left_offset = Math.floor((window_width - gallery_width) / 2),
+    left_offset = Math.floor((viewport_width - gallery_width) / 2),
+
+    rounded_devicePixelRatio = Math.floor(devicePixelRatio), // round any way you like to integer
 
     observer = lozad();
 
 
 var page_number = 0, 
 
-    page_length = 32, 
+    page_length = 64, 
 
-   // page_length = (page_length % columns_per_row > 0) ? Math.ceil(page_length / columns_per_row) : page_length,
+//    page_length = (page_length % columns_per_row > 0) ? Math.ceil(page_length / columns_per_row) : page_length,
 
     total_pages = Math.ceil(shapes.length / page_length),
     
@@ -149,9 +157,21 @@ function auto_paginate() {
 
                 j = column_height.indexOf(Math.min(...column_height));
 
+                aspect_ratio = images[i][1] / images[i][0];
+
                 img_height = Math.round((images[i][1] / images[i][0]) * img_width, 0);
 
-                q = (devicePixelRatio > 1 && images[i][0] >= img_width * devicePixelRatio) ? devicePixelRatio : 1;
+                r = rounded_devicePixelRatio; 
+
+                r = (mobile && prefer_retina && r>2) ? 2 : r;
+
+                r = (mobile && enable_mobile_hd) ? r : 1;
+         
+                tile_width = img_width * r;
+
+                tile_height = Math.round(aspect_ratio * tile_width, 0) * r;
+
+                q = devicePixelRatio > 1 && tile_width > img_width;
 
                 chtml[i] = `<div class="lozad brick" style="top:${
                         column_height[j]
@@ -164,13 +184,15 @@ function auto_paginate() {
                     }px;background-image:url('https://picsum.photos/seed/${
                         photo_counter
                     }/${
-                        alt_max_width
+                        tile_width
                     }/${
-                        Math.round((images[i][1] / images[i][0]) * alt_max_width, 0)
+                        tile_height
                     }');"><div class="brick-id">${ 
-                        photo_counter + ((q > 1) ? '&nbsp;' + devicePixelRatio + 'x' : '') 
+                        photo_counter + ((q) ? '&nbsp;' + r + 'x' : '') 
                     }</div></div>`;
                         
+                // console.log(chtml[i]);
+
                 column_height[j] += img_height + gutter_size;
 
                 photo_counter++;
@@ -205,7 +227,7 @@ window.addEventListener("resize",debounce(function(e){
 
     get_window_geometry();
 
-    if (window_width != last_width) {
+    if (viewport_width != last_width) {
         location.reload();
     }
 }));

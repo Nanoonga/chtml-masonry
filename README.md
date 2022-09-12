@@ -16,9 +16,10 @@ These listings demonstrate the Computed HTML model by using it as a runtime for 
 
 ## Features 
 
-* Time to Interactive: instant (< 500 ms)
+* Time to Interactive: instant 
+* Mobile ready
 * Infinite scroll
-* Supports UHD 4K and Retina displays
+* Supports high density displays
 * Responsive from 200 to 2000 pixels viewport width
 
 
@@ -34,7 +35,7 @@ These listings demonstrate the Computed HTML model by using it as a runtime for 
 Computed HTML uses the innerHTML function to parse and render an arbitrarily complex layout inserted anywhere within a skeletal DOM. The layout is assembled using JavaScript with every necessary attribute compiled inline. 
 
 These attributes may be drawn from cookies, variables, hardcoded data, XMLHttp requests, or the environment the code is executing in (such as the current viewport geometry).  
-
+zzs
 ```
 <body>
    <link href="style.css">
@@ -82,16 +83,38 @@ for each image i
 next image
 
 gallery.innerHTML += array to string(chtml)
-```
 
+***
+**example output**
+chtml[i] = <div class="lozad brick" style="top:1384px;left:61px;width:192px;height:144px;background-image:url('https://picsum.photos/seed/30/384/576');"><div class="brick-id">30&nbsp;2x</div></div>
+
+```
 
 ## High Definition Displays
 
-Thumbnail images are fetched at a multiple of the device pixel ratio if `device pixel ratio > 1` and `image width >= (display width * device pixel ratio)`.  
+Whether high-resolution thumbnails are worth their download bandwidth on devices with a device pixel ratio > 2 is philosophical[1].
+
+Thumbnail images (tiles) are fetched at a multiple of the device pixel ratio if `device pixel ratio > 1` and `image width >= (display width * device pixel ratio)`.  
 
 This will show the sharpest rendition on all displays. 
 
-Whether high-resolution thumbnails are worth their download bandwidth on devices with a pixel ratio > 2 is philosophical. 
+Some devices have noninteger device pixel ratios, like 2.25 or 3.5. The rounded device pixel ratio is the floor of the device pixel ratio, such as 1, 2, 3, or 4.
+
+The tile size of the thumbnail is the display size * rounded device pixel ratio.
+
+Mobile screens (and desktop browser windows) > 400 px use a fixed tile size for either orientation.  
+
+### Mobile considerations 
+
+On mobile screens < 400 px wide, the tile size will be different in portrait mode than landscape. This will cause a second rendition of the thumbnail to be downloaded. It might be a waste of bandwidth, but it's not a bug.
+
+If you're indifferent or unsure that tiles up to 4*x* on a mobile device are worthwhile, set the constant `prefer_retina = true`. This will download at a maximum 2*x* even if the device's rounded device pixel ratio is higher. 
+
+If you don't want high density thumbnails on mobile at all, set the constant `enable_mobile_hd = false`. This will download all thumbnails at 1*x*.
+
+These constants should have no effect on desktop browsers, which are assumed to have cheap and plentiful bandwidth.
+***
+[1] [More about devicePixelRatio](https://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html)
 
 
 ## Lorem Picsum 
