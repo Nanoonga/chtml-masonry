@@ -83,12 +83,16 @@ for each image i
 next image
 
 gallery.innerHTML += array to string(chtml)
-
-***
-**example output**
-chtml[i] = <div class="lozad brick" style="top:1384px;left:61px;width:192px;height:144px;background-image:url('https://picsum.photos/seed/30/384/576');"><div class="brick-id">30&nbsp;2x</div></div>
-
 ```
+
+#### Example CHTML element
+```
+chtml[i] = <div class="lozad brick"
+style="top:1384px;left:61px;width:192px;height:144px;background-
+image:url('https://picsum.photos/seed/30/384/576');">
+<div class="brick-id">30&nbsp;2x</div></div>
+```
+
 
 ## High Definition Displays
 
