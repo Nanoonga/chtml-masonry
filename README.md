@@ -35,7 +35,7 @@ These listings demonstrate the Computed HTML model by using it as a runtime for 
 Computed HTML uses the innerHTML function to parse and render an arbitrarily complex layout inserted anywhere within a skeletal DOM. The layout is assembled using JavaScript with every necessary attribute compiled inline. 
 
 These attributes may be drawn from cookies, variables, hardcoded data, XMLHttp requests, or the environment the code is executing in (such as the current viewport geometry).  
-zzs
+
 ```
 <body>
    <link href="style.css">
