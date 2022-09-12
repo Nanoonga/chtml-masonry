@@ -94,9 +94,15 @@ const last_width = viewport_width,
 
     max_img_width = (Math.floor((viewport_width - total_gutter_width) / columns_per_row) * 4) / 4,
 
+<<<<<<< HEAD
     alt_max_width = 192, 
 
     img_width = (max_img_width >= alt_max_width) ? alt_max_width : max_img_width,
+=======
+    alt_max_width = 192, // 
+
+    img_width = (max_img_width > 192) ? 192 : max_img_width,
+>>>>>>> origin/master
 
     gallery_width = (img_width * columns_per_row) + total_gutter_width,
 
@@ -184,9 +190,15 @@ function auto_paginate() {
                     }px;background-image:url('https://picsum.photos/seed/${
                         photo_counter
                     }/${
+<<<<<<< HEAD
                         tile_width
                     }/${
                         tile_height
+=======
+                        alt_max_width
+                    }/${
+                        Math.round((images[i][1] / images[i][0]) * alt_max_width, 0)
+>>>>>>> origin/master
                     }');"><div class="brick-id">${ 
                         photo_counter + ((q) ? '&nbsp;' + r + 'x' : '') 
                     }</div></div>`;
