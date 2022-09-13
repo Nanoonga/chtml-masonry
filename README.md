@@ -37,13 +37,16 @@ Computed HTML uses the innerHTML function to parse and render an arbitrarily com
 These attributes may be drawn from cookies, variables, hardcoded data, XMLHttp requests, or the environment the code is executing in (such as the current viewport geometry).  
 
 ```
-<body>
-   <link href="style.css">
-   <script href="script.js">
-   <div id="greeting"></div>
-</body>
+example.html
+
+	<body>
+	   <link href="style.css">
+	   <script href="script.js">
+	   <div id="greeting"></div>
+	</body>
 
 script.js:
+
    document.addEventListener("DOMContentLoaded", function(){
       document.getElementById("greeting").innerHTML = [
          '<p>Hello, World</p>',
