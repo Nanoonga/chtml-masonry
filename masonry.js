@@ -1,6 +1,6 @@
 /***************************************************************************
  *
- *   masonry.js v2
+ *   masonry.js v3
  *   https://github.com/glroyal/chtml-masonry/shapefile.js
  *   Copyright (c) 2022 Gary Royal
  *  
@@ -151,6 +151,10 @@ function auto_paginate() {
 
             tile_height,
 
+            dpr = devicePixelRatio,
+
+            rdpr,
+
             r,
 
             q;
@@ -163,9 +167,9 @@ function auto_paginate() {
 
                 img_height = Math.round((images[i][1] / images[i][0]) * img_width, 0);
 
-                r = (devicePixelRatio > 1 && images[i][0] >= img_width * devicePixelRatio) ? devicePixelRatio : 1;
+                r = (dpr > 1 && images[i][0] >= img_width * dpr) ? dpr : 1;
 
-                if(devicePixelRatio > 1 && r == 1 && splurge) {
+                if(dpr > 1 && r == 1 && splurge) {
 
                     rdpr = Math.floor(devicePixelRatio); // force integer
 
