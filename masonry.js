@@ -79,10 +79,6 @@ get_window_geometry();
 const last_width = viewport_width,
 
     mobile = navigator.userAgent.toLowerCase().match(/mobile/i),
-    
-    enable_mobile_hd = true, // if you want HD thumbnails on mobile
-
-    prefer_retina = false, // if you want to limit mobile HD to 2x  
 
     responsive_columns = [0,0,2,2,2,2,3,3,4,4,5,5,5,5,6,6,7,7,8,8,9],
 
@@ -101,8 +97,6 @@ const last_width = viewport_width,
     gallery_width = (img_width * columns_per_row) + total_gutter_width,
 
     left_offset = Math.floor((viewport_width - gallery_width) / 2),
-
-    rounded_devicePixelRatio = Math.floor(devicePixelRatio), // round any way you like to integer
 
     observer = lozad();
 
@@ -151,7 +145,13 @@ function auto_paginate() {
 
             img_height,
 
-            r;
+            tile_width,
+
+            tile_height,
+
+            r = devicePixelRatio,
+
+            q;
 
             for(i = 0; i < images.length; i++) {
 
@@ -161,17 +161,11 @@ function auto_paginate() {
 
                 img_height = Math.round((images[i][1] / images[i][0]) * img_width, 0);
 
-                r = rounded_devicePixelRatio; 
-
-                r = (mobile && prefer_retina && r>2) ? 2 : r;
-
-                r = (mobile && enable_mobile_hd) ? r : 1;
+                q = (r>1 && images[i][0] >= img_width * r); 
          
-                tile_width = img_width * r;
+                tile_width = (q) ? Math.floor(img_width * r) : img_width;
 
-                tile_height = img_height * r;
-
-                q = devicePixelRatio > 1 && tile_width > img_width;
+                tile_height = (q) ? Math.floor(img_height * r) : img_height;
 
                 chtml[i] = `<div class="lozad brick" style="top:${
                         column_height[j]
@@ -190,8 +184,6 @@ function auto_paginate() {
                     }');"><div class="brick-id">${ 
                         photo_counter + ((q) ? '&nbsp;' + r + 'x' : '') 
                     }</div></div>`;
-                        
-                //console.log(chtml[i]);
 
                 column_height[j] += img_height + gutter_size;
 

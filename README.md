@@ -97,27 +97,9 @@ image:url('https://picsum.photos/seed/30/384/576');">
 
 ## High Definition Displays
 
-Whether high-resolution thumbnails are worth their download bandwidth on devices with a device pixel ratio > 2 is [philosophical](https://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html).
+Whether high-resolution thumbnails are worth their download bandwidth on mobile devices with a device pixel ratio > 1 is [philosophical](https://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html).
 
-By default, thumbnail images (tiles) are fetched at a multiple of the device pixel ratio if `device pixel ratio > 1` and `image width >= (display width * device pixel ratio)`.  
-
-This will show the sharpest rendition on all displays at all window sizes. 
-
-Some devices have noninteger device pixel ratios, like 2.25 or 3.5. The rounded device pixel ratio is the floor of the device pixel ratio, such as 1, 2, 3, or 4.
-
-The tile size of the thumbnail is the display size * rounded device pixel ratio.
-
-Mobile screens (and desktop browser windows) > 400 px use a fixed tile size for either orientation.  
-
-### Mobile considerations 
-
-On mobile screens < 400 px wide, the tile size will be different in portrait mode than landscape. This will cause a second rendition of the thumbnail to be downloaded when the device is rotated. It might be a waste of bandwidth, but it's not a bug.
-
-If you're indifferent or unsure that tiles up to 4*x* on a mobile device are worthwhile, set the constant `prefer_retina = true`. This will download at a maximum 2*x* even if the device's rounded device pixel ratio is higher. 
-
-If you don't want high density thumbnails on mobile at all, set the constant `enable_mobile_hd = false`. This will download all thumbnails at 1*x*.
-
-These constants should have no effect on desktop browsers, which are assumed to have cheap and plentiful bandwidth.
+By default, thumbnail images (tiles) are fetched at a multiple of the device pixel ratio if `device pixel ratio > 1` and `image width >= (display width * device pixel ratio)`. 
 
 
 ## Lorem Picsum 
