@@ -101,6 +101,18 @@ Whether high-resolution thumbnails are worth their download bandwidth on mobile 
 
 By default, thumbnail images (tiles) are fetched at a multiple of the device pixel ratio if `device pixel ratio > 1` and `image width >= (display width * device pixel ratio)`. 
 
+### Splurge mode
+
+There is very little documentation concerning best practices for rendering thumbnail photographs on HD displays, even Retina.
+
+Displaying all photos at 1x that aren't at least `display width * device pixel ratio)` wide means leaving a lot of pixels on the table that might have been used to improve the rendition of all photos, and not just the ones aligned to the native device pixel ratio (which will vary from one device to the next).
+
+Splurge mode tries to pack as much detail into thumbnails as possible by finding the densest pixel ratio below the native device pixel ratio that will fit.
+
+So if the native DPR is 4 and the photo isn't wide enough for a 4x thumbnail, it will try for a 3x, and 2x before defaulting to 1x.
+
+Set the constant `splurge = false` to disable this behavior.
+
 
 ## Lorem Picsum 
 

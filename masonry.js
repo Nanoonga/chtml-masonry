@@ -80,6 +80,8 @@ const last_width = viewport_width,
 
     mobile = navigator.userAgent.toLowerCase().match(/mobile/i),
 
+    splurge = true,
+
     responsive_columns = [0,0,2,2,2,2,3,3,4,4,5,5,5,5,6,6,7,7,8,8,9],
 
     columns_per_row = responsive_columns[Math.floor(viewport_width / 100)],
@@ -149,7 +151,7 @@ function auto_paginate() {
 
             tile_height,
 
-            r = devicePixelRatio,
+            r,
 
             q;
 
@@ -160,6 +162,20 @@ function auto_paginate() {
                 j = column_height.indexOf(Math.min(...column_height));
 
                 img_height = Math.round((images[i][1] / images[i][0]) * img_width, 0);
+
+                r = (devicePixelRatio > 1 && images[i][0] >= img_width * devicePixelRatio) ? devicePixelRatio : 1;
+
+                if(devicePixelRatio > 1 && r == 1 && splurge) {
+
+                    rdpr = Math.floor(devicePixelRatio); // force integer
+
+                    r = (rdpr >= 4 && images[i][0] >= img_width * 2) ? 2 : r;
+                    r = (rdpr >= 4 && images[i][0] >= img_width * 3) ? 3 : r;   
+                    r = (rdpr >= 4 && images[i][0] >= img_width * 4) ? 4 : r;    
+                    r = (rdpr >= 3 && images[i][0] >= img_width * 2) ? 2 : r;
+                    r = (rdpr >= 3 && images[i][0] >= img_width * 3) ? 3 : r;                                                         
+                    r = (rdpr >= 2 && images[i][0] >= img_width * 2) ? 2 : r;
+                } 
 
                 q = (r>1 && images[i][0] >= img_width * r); 
          
@@ -184,6 +200,8 @@ function auto_paginate() {
                     }');"><div class="brick-id">${ 
                         photo_counter + ((q) ? '&nbsp;' + r + 'x' : '') 
                     }</div></div>`;
+
+                console.log(photo_counter, devicePixelRatio, r, images[i][0], img_width, tile_width);
 
                 column_height[j] += img_height + gutter_size;
 
