@@ -51,8 +51,8 @@ script.js:
    
       document.getElementById("greeting").innerHTML = [
          '<p>Hello, World</p>',
-		 
       ].join('');
+	  
    });
 ```
 
