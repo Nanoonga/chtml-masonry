@@ -136,6 +136,7 @@ Picsum placeholders are fetched in 'seed' mode, that is, for an arbitrary seed v
 
 ## Working on
 
-A Picsum-syntax-compatible image server for my own image database. 
+A Picsum-compatible image server for user supplied image databases.
+
 
 
