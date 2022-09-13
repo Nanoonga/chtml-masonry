@@ -37,7 +37,7 @@ Computed HTML uses the innerHTML function to parse and render an arbitrarily com
 These attributes may be drawn from cookies, variables, hardcoded data, XMLHttp requests, or the environment the code is executing in (such as the current viewport geometry).  
 
 ```
-example.html
+example.html:
 
 	<body>
 	   <link href="style.css">
