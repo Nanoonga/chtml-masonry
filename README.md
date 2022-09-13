@@ -48,8 +48,10 @@ example.html:
 script.js:
 
    document.addEventListener("DOMContentLoaded", function(){
+   
       document.getElementById("greeting").innerHTML = [
          '<p>Hello, World</p>',
+		 
       ].join('');
    });
 ```
