@@ -149,15 +149,15 @@ function auto_paginate() {
 
             j,  // current column
 
-            img_height;
+            img_height,
+
+            r;
 
             for(i = 0; i < images.length; i++) {
 
                 // j = column with shortest height
 
                 j = column_height.indexOf(Math.min(...column_height));
-
-                aspect_ratio = images[i][1] / images[i][0];
 
                 img_height = Math.round((images[i][1] / images[i][0]) * img_width, 0);
 
@@ -169,7 +169,7 @@ function auto_paginate() {
          
                 tile_width = img_width * r;
 
-                tile_height = Math.round(aspect_ratio * tile_width, 0) * r;
+                tile_height = img_height * r;
 
                 q = devicePixelRatio > 1 && tile_width > img_width;
 
@@ -191,7 +191,7 @@ function auto_paginate() {
                         photo_counter + ((q) ? '&nbsp;' + r + 'x' : '') 
                     }</div></div>`;
                         
-                // console.log(chtml[i]);
+                //console.log(chtml[i]);
 
                 column_height[j] += img_height + gutter_size;
 
