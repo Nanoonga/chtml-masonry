@@ -205,7 +205,7 @@ function auto_paginate() {
                         photo_counter + ((q) ? '&nbsp;' + r + 'x' : '') 
                     }</div></div>`;
 
-                console.log(photo_counter, devicePixelRatio, r, images[i][0], img_width, tile_width);
+                // console.log(photo_counter, devicePixelRatio, r, images[i][0], img_width, tile_width);
 
                 column_height[j] += img_height + gutter_size;
 
