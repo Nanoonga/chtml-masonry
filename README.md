@@ -1,7 +1,8 @@
 # chtml-masonry
-> A Computed HTML (CHTML) solution to the Masonry layout
+> A Computed HTML solution to the Masonry layout
+> 
+> Gary Royal
 
-#### Gary Royal
 
 ![screenshot](masonry.png)
 
@@ -17,10 +18,10 @@ These listings demonstrate the Computed HTML model by using it as a runtime for 
 ## Features 
 
 * Time to Interactive: instant 
-* Responsive from 200 to 2000 pixels viewport width
+* Responsive from 200 to 2000 pixels vw
 * Supports high density displays
-* Mobile ready
 * Infinite scroll
+* Mobile ready
 
 
 ## Quick Start
@@ -32,29 +33,32 @@ These listings demonstrate the Computed HTML model by using it as a runtime for 
 
 ## Computed HTML 
 
-Computed HTML uses the innerHTML function to parse and render an arbitrarily complex layout inserted anywhere within a skeletal DOM. The layout is assembled using JavaScript with every necessary attribute compiled inline. 
+Computed HTML uses the innerHTML function to parse and render an arbitrarily complex layout anywhere within a skeletal DOM. The layout is assembled using JavaScript with every necessary attribute compiled inline. 
 
-These attributes may be drawn from cookies, variables, hardcoded data, XMLHttp requests, or the environment the code is executing in (such as the current viewport geometry).  
+These attributes may be drawn from cookies, variables, hardcoded data, XMLHttp requests, or the environment the code is executing in (such as the current display geometry).  
+
+Computed HTML is _fast_. Sub-second TTIs are typical, because the browser's HTML interpreter is highly optimized for rendering DOMs from streams of layout tags. 
 
 ```
-example.html:
+chtml.html:
 
 	<body>
 	   <link href="style.css">
-	   <script href="script.js">
+	   <script src="script.js">
 	   <div id="greeting"></div>
 	</body>
-
+	
 script.js:
 
-   document.addEventListener("DOMContentLoaded", function(){
-   
-      document.getElementById("greeting").innerHTML = [
-         '<p>Hello, World</p>',
-      ].join('');
-	  
-   });
+	document.addEventListener("DOMContentLoaded", function(){
+
+		document.getElementById("greeting").innerHTML = [
+			'<p>Hello, World</p>',
+		].join('');  
+
+	});
 ```
+
 
 ## Masonry layout algorithm
 
@@ -66,21 +70,27 @@ let img width = (column width - margin)
 
 let column height[0 .. columns per row] = margin
 
-for each image i
+for each photo i
 
-	let j = index(minimum(column_height))
+	j = index(minimum(column_height))
 	
 	left = offset of jth column
 	top = column height[j]
-	img height = (aspect ratio * img width)
-	quality = (images[i][width] >= devicePixelRatio * img_width) ? devicePixelRatio : 1
 	
+	img height = (aspect ratio * img width)
+	
+	dpr = displayPixelRatio;
+	k = (dpr>1 && photo[i][width] >= img_width * dpr) ? dpr : 1;
+	
+	tile_width = img_width * k;
+	tile_height = img_height * k; 
+
 	chtml[i] = '<div class=brick style="
 		left:(left)px; 
 		top:(top)px; 
-		width:(quality * img width)px; 
-		height:(quality * img height)px; 
-		url(https://picsum.photos/seed/i/img_width/img_height)
+		width:(img_width)px; 
+		height:(img_height)px;
+		url(https://picsum.photos/seed/i/tile_width/tile_height)
 	"></div>'
 
 	let column height[j] += img height + margin
@@ -90,18 +100,18 @@ next image
 gallery.innerHTML += array to string(chtml)
 ```
 
-#### Example CHTML element
+####  Compiled output element
 ```
-chtml[i] = <div class="lozad brick"
-style="top:1384px;left:61px;width:192px;height:144px;background-
-image:url('https://picsum.photos/seed/30/384/576');">
-<div class="brick-id">30&nbsp;2x</div></div>
+	chtml[i] = <div class="lozad brick"
+		style="top:1384px;left:61px;width:192px;height:144px;background-
+		image:url('https://picsum.photos/seed/30/384/576');">
+	</div>
 ```
 
 
 ## High Definition Displays
 
-Whether high-resolution thumbnails are worth their download bandwidth on mobile devices with a device pixel ratio > 1 is [philosophical](https://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html).
+Whether high-resolution thumbnails are worth their download bandwidth on mobile devices with a device pixel ratio > 1 is [philosophical](https://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html), but I think viewing high-resolution photos is the point of having a high-density display.
 
 By default, thumbnail images (tiles) are fetched at a multiple of the device pixel ratio if `device pixel ratio > 1` and `image width >= (display width * device pixel ratio)`. 
 
@@ -109,11 +119,11 @@ By default, thumbnail images (tiles) are fetched at a multiple of the device pix
 
 There is very little documentation concerning best practices for rendering thumbnail photographs on HD displays, even Retina.
 
-Displaying all photos at 1x that aren't at least `display width * device pixel ratio` wide means leaving a lot of pixels on the table that might have been used to improve the rendition of all photos, and not just the ones aligned to the device pixel ratio (which will vary from one device to the next).
+Displaying all photos at 1x that aren't at least `display width * device pixel ratio` wide means leaving a lot of pixels on the table that might have been used to improve the rendition of other photos, not just the ones aligned to the device pixel ratio (which will vary from one device to the next).
 
 Splurge mode tries to pack as much detail into thumbnails as possible by finding the densest pixel ratio below the device pixel ratio that will fit.
 
-So if the device pixel ratio is 4 and the photo isn't wide enough for a 4x thumbnail, it will try for a 3x, and 2x before defaulting to 1x.
+So if the device pixel ratio is 4 and the photo isn't wide enough for a 4x thumbnail, it will try 3x, and 2x before defaulting to 1x.
 
 Set the constant `splurge = false` to disable this behavior.
 
