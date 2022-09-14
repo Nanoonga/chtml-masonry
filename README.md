@@ -40,7 +40,7 @@ These attributes may be drawn from cookies, variables, hardcoded data, XMLHttp r
 Computed HTML is _fast_. Sub-second TTIs are typical, because the browser's HTML interpreter is highly optimized for rendering DOMs from streams of layout tags. 
 
 ```
-chtml.html:
+hello.html:
 
 <body>
    <link href="style.css">
@@ -100,7 +100,9 @@ gallery.innerHTML += array to string(chtml)
 
 ####  Compiled output element @2x
 ```
-chtml[i] = <div class="lozad brick" style="top:1384px;left:61px;width:192px;height:144px;background-image:url('https://picsum.photos/seed/30/384/288');"></div>
+chtml[i] = <div class="lozad brick" 
+style="top:1384px;left:61px;width:192px;height:144px;background-
+image:url('https://picsum.photos/seed/30/384/288');"></div>
 ```
 
 
