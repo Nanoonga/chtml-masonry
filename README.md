@@ -104,7 +104,7 @@ gallery.innerHTML += array to string(chtml)
 ```
 chtml[i] = <div class="lozad brick"
 	style="top:1384px;left:61px;width:192px;height:144px;background-
-	image:url('https://picsum.photos/seed/30/384/576');">
+	image:url('https://picsum.photos/seed/30/384/288');">
 </div>
 ```
 
