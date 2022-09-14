@@ -42,21 +42,19 @@ Computed HTML is _fast_. Sub-second TTIs are typical, because the browser's HTML
 ```
 chtml.html:
 
-	<body>
-	   <link href="style.css">
-	   <script src="script.js">
-	   <div id="greeting"></div>
-	</body>
+<body>
+   <link href="style.css">
+   <script src="script.js">
+   <div id="greeting"></div>
+</body>
 	
 script.js:
 
-	document.addEventListener("DOMContentLoaded", function(){
-
-		document.getElementById("greeting").innerHTML = [
-			'<p>Hello, World</p>',
-		].join('');  
-
-	});
+document.addEventListener("DOMContentLoaded", function(){
+	document.getElementById("greeting").innerHTML = [
+		'<p>Hello, World</p>',
+	].join('');  
+});
 ```
 
 
@@ -100,12 +98,9 @@ next image
 gallery.innerHTML += array to string(chtml)
 ```
 
-####  Compiled output element
+####  Compiled output element @2x
 ```
-chtml[i] = <div class="lozad brick"
-	style="top:1384px;left:61px;width:192px;height:144px;background-
-	image:url('https://picsum.photos/seed/30/384/288');">
-</div>
+chtml[i] = <div class="lozad brick" style="top:1384px;left:61px;width:192px;height:144px;background-image:url('https://picsum.photos/seed/30/384/288');"></div>
 ```
 
 
@@ -123,7 +118,7 @@ Displaying all photos at 1x that aren't at least `display width * device pixel r
 
 Splurge mode tries to pack as much detail into thumbnails as possible by finding the densest pixel ratio below the device pixel ratio that will fit.
 
-So if the device pixel ratio is 4 and the photo isn't wide enough for a 4x thumbnail, it will consider 3x, and 2x before defaulting to 1x.
+So if the device pixel ratio is 4 and the photo isn't wide enough for a 4x thumbnail, it will consider 3x, and then 2x before defaulting to 1x.
 
 Set the constant `splurge = false` to disable this behavior.
 
