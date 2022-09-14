@@ -102,10 +102,10 @@ gallery.innerHTML += array to string(chtml)
 
 ####  Compiled output element
 ```
-	chtml[i] = <div class="lozad brick"
-		style="top:1384px;left:61px;width:192px;height:144px;background-
-		image:url('https://picsum.photos/seed/30/384/576');">
-	</div>
+chtml[i] = <div class="lozad brick"
+	style="top:1384px;left:61px;width:192px;height:144px;background-
+	image:url('https://picsum.photos/seed/30/384/576');">
+</div>
 ```
 
 
@@ -123,7 +123,7 @@ Displaying all photos at 1x that aren't at least `display width * device pixel r
 
 Splurge mode tries to pack as much detail into thumbnails as possible by finding the densest pixel ratio below the device pixel ratio that will fit.
 
-So if the device pixel ratio is 4 and the photo isn't wide enough for a 4x thumbnail, it will try 3x, and 2x before defaulting to 1x.
+So if the device pixel ratio is 4 and the photo isn't wide enough for a 4x thumbnail, it will consider 3x, and 2x before defaulting to 1x.
 
 Set the constant `splurge = false` to disable this behavior.
 
