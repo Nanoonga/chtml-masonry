@@ -78,6 +78,8 @@ get_window_geometry();
 
 const last_width = viewport_width,
 
+    max_photos = 384,
+
     mobile = navigator.userAgent.toLowerCase().match(/mobile/i),
 
     splurge = true,
@@ -105,9 +107,9 @@ const last_width = viewport_width,
 
 var page_number = 0, 
 
-    page_length = 48, 
+    shapes = shapes.slice(0,max_photos),
 
-//    page_length = (page_length % columns_per_row > 0) ? Math.ceil(page_length / columns_per_row) : page_length,
+    page_length = Math.ceil(window_height / img_width) * columns_per_row * 2,
 
     total_pages = Math.ceil(shapes.length / page_length),
     
@@ -117,6 +119,9 @@ var page_number = 0,
 
     column_height.fill(gutter_size);
     
+    //console.log(shapes.length);
+    //console.log(page_length);
+    //console.log(total_pages);
 
 function fetch_page() {
 
@@ -130,10 +135,6 @@ function fetch_page() {
     }               
 }
 
-function tile_url(id, size) {
-
-    return 'https://picsum.photos/seed/' + id + '/' + size;
-}
 
 function auto_paginate() {
 
@@ -200,7 +201,7 @@ function auto_paginate() {
                     }px;height:${
                         img_height
                     }px;background-image:url('${
-                        tile_url(photo_counter,tile_size)
+                        'https://picsum.photos/seed/' + photo_counter + '/' + tile_size
                     }');"><div class="brick-id">${ 
                         photo_counter + ((q) ? '&nbsp;' + r + 'x' : '') 
                     }</div></div>`;
@@ -210,6 +211,8 @@ function auto_paginate() {
                 column_height[j] += img_height + gutter_size;
 
                 photo_counter++;
+
+                photo_counter = (photo_counter > max_photos) ? 1 : photo_counter;
             }
 
             var el = document.createElement('div');
