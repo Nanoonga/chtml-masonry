@@ -37,7 +37,7 @@ Computed HTML uses the innerHTML function to parse and render an arbitrarily com
 
 Attributes may be drawn from cookies, variables, hardcoded data, XMLHttp requests, or the environment the code is executing in (such as the current display geometry).  
 
-Computed HTML is _fast_. Sub-second TTIs regardless of page complexity are typical, because the browser's HTML interpreter is optimized for rendering DOMs from strings of layout tags. 
+**Computed HTML is _fast_**. Sub-second TTIs regardless of page complexity are typical, because the browser's HTML interpreter is optimized for rendering DOMs from strings of layout tags. 
 
 Scripts are usually far more compact than the layouts they describe, and may be cached like any other static asset. This eliminates the need to send anything but the delta to the client, reducing bandwidth consumption 98% or more.   
  
