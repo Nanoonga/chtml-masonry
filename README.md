@@ -12,7 +12,7 @@
 
 **The Masonry layout** (also known as the Pinterest layout) is a matrix of semi-regular elements separated by a constant margin, like bricks in a wall, but rotated 90 degrees so that it grows from the top down as new elements are added.
 
-These listings demonstrate the Computed HTML model by using it as a runtime for the Masonry layout algorithm below.
+These listings demonstrate the Computed HTML model by using it as a runtime for the Masonry layout algorithm described below.
 
 
 ## Features 
@@ -33,25 +33,31 @@ These listings demonstrate the Computed HTML model by using it as a runtime for 
 
 ## Computed HTML 
 
-Computed HTML uses the innerHTML function to parse and render an arbitrarily complex layout within the nodes of an empty DOM. The layout is assembled using JavaScript with the element attributes compiled inline. 
+Computed HTML uses the innerHTML function to parse and render an arbitrarily complex layout within the nodes of a minimal DOM. The tags describing the layout are assembled with element attributes compiled inline. 
 
-Attribute values may be drawn from cookies, variables, hardcoded data, XMLHttp requests, or the environment the code is executing in (such as the current display geometry).  
+Attributes may be drawn from cookies, variables, hardcoded data, XMLHttp requests, or the environment the code is executing in (such as the current display geometry).  
 
-Computed HTML is _fast_. Sub-second TTIs are typical, because the browser's HTML interpreter is optimized for rendering DOMs from streams of layout tags. Scripts are cached like any other static asset and downloaded only when missing or changed, eliminating the bandwidth and handshaking and round trips required by server-side rendering.   
+Computed HTML is _fast_. Sub-second TTIs regardless of page complexity are typical, because the browser's HTML interpreter is optimized for rendering DOMs from strings of layout tags. 
+
+Scripts are usually far more compact than the layouts they describe, and may be cached like any other static asset. This eliminates the need to send anything but the delta to the client, reducing bandwidth consumption 98% or more.   
+ 
 
 ```
 hello.html:
 
+...
 <body>
    <script src="script.js">
    <div id="greeting"></div>
 </body>
+...
 
 ===
 
 script.js:
 
 document.addEventListener("DOMContentLoaded", function(){
+
 	document.getElementById("greeting").innerHTML = [
 		'<p>Hello, World</p>',
 	].join('');  
@@ -138,12 +144,12 @@ Picsum placeholders are fetched in 'seed' mode, that is, for an arbitrary seed v
 
 ## Lozad.js
 
-**[Lozad.js](https://github.com/ApoorvSaxena/lozad.js)** is an observer-based lazy loader for images. It is optional, but it allows the layout algorithm to run as fast as the user can scroll. 
+**[Lozad.js](https://github.com/ApoorvSaxena/lozad.js)** is an observer-based lazy loader for images. It is optional, but it allows the layout algorithm to stay ahead of the scroll bar.  
 
 
 ## Working on
 
-A version of the masonry algorithm with a PHP back end, caching image server, MySQL schema, and migration script for use with your own photo collection. 
+A more detailed implementation of this algorithm with a PHP back end, caching image server, MySQL schema, and migration script for use with your own photos. 
 
 
 
