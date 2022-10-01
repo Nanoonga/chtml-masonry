@@ -33,21 +33,22 @@ These listings demonstrate the Computed HTML model by using it as a runtime for 
 
 ## Computed HTML 
 
-Computed HTML uses the innerHTML function to parse and render an arbitrarily complex layout anywhere within a skeletal DOM. The layout is assembled using JavaScript with every necessary attribute compiled inline. 
+Computed HTML uses the innerHTML function to parse and render an arbitrarily complex layout within the nodes of an empty DOM. The layout is assembled using JavaScript with the element attributes compiled inline. 
 
-These attributes may be drawn from cookies, variables, hardcoded data, XMLHttp requests, or the environment the code is executing in (such as the current display geometry).  
+Attribute values may be drawn from cookies, variables, hardcoded data, XMLHttp requests, or the environment the code is executing in (such as the current display geometry).  
 
-Computed HTML is _fast_. Sub-second TTIs are typical, because the browser's HTML interpreter is highly optimized for rendering DOMs from streams of layout tags. 
+Computed HTML is _fast_. Sub-second TTIs are typical, because the browser's HTML interpreter is optimized for rendering DOMs from streams of layout tags. Scripts are cached like any other static asset and downloaded only when missing or changed, eliminating the bandwidth and handshaking and round trips required by server-side rendering.   
 
 ```
 hello.html:
 
 <body>
-   <link href="style.css">
    <script src="script.js">
    <div id="greeting"></div>
 </body>
-	
+
+===
+
 script.js:
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -61,60 +62,59 @@ document.addEventListener("DOMContentLoaded", function(){
 ## Masonry layout algorithm
 
 ```
-const margin (px)
+const margin = 8
+const dpr = displayPixelRatio
 calc columns per row
 calc column width
-let img width = (column width - margin)
+var img width = (column width - margin)
 
-let column height[0 .. columns per row] = margin
+column height[0 .. columns per row] = margin
 
 for each photo i
 
 	j = index(minimum(column_height))
 	
 	left = offset of jth column
+	
 	top = column height[j]
 	
 	img height = (aspect ratio * img width)
 	
-	dpr = displayPixelRatio;
-	k = (dpr>1 && photo[i][width] >= img_width * dpr) ? dpr : 1;
+	quality = (dpr>1 && photo[i][width] >= img_width * dpr) ? dpr : 1;
 	
-	tile_width = img_width * k;
-	tile_height = img_height * k; 
-
+	tile_size = maximum(img_width,img_height) * quality;
+	
 	chtml[i] = '<div class=brick style="
 		left:(left)px; 
 		top:(top)px; 
 		width:(img_width)px; 
 		height:(img_height)px;
-		url(https://picsum.photos/seed/i/tile_width/tile_height)
+		url(https://picsum.photos/seed/i/tile_size)
 	"></div>'
 
 	let column height[j] += img height + margin
 	
-next image
+next i
 
 gallery.innerHTML += array to string(chtml)
 ```
 
-####  Compiled output element @2x
+####  Sample computed output element @2x
 ```
 chtml[i] = <div class="lozad brick" 
 style="top:1384px;left:61px;width:192px;height:144px;background-
-image:url('https://picsum.photos/seed/30/384/288');"></div>
+image:url('https://picsum.photos/seed/30/384');"></div>
 ```
 
 
 ## High Definition Displays
 
-Whether high-resolution thumbnails are worth their download bandwidth on mobile devices with a device pixel ratio > 1 is [philosophical](https://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html), but I think viewing high-resolution photos is the point of having a high-density display.
-
 By default, thumbnail images (tiles) are fetched at a multiple of the device pixel ratio if `device pixel ratio > 1` and `image width >= (display width * device pixel ratio)`. 
+
 
 ### Splurge mode
 
-There is very little documentation concerning best practices for rendering thumbnail photographs on HD displays, even Retina.
+There is very little documentation concerning best practices for rendering thumbnail photographs on HD displays, even Retina displays.
 
 Displaying all photos at 1x that aren't at least `display width * device pixel ratio` wide means leaving a lot of pixels on the table that might have been used to improve the rendition of other photos, not just the ones aligned to the device pixel ratio (which will vary from one device to the next).
 
@@ -143,7 +143,7 @@ Picsum placeholders are fetched in 'seed' mode, that is, for an arbitrary seed v
 
 ## Working on
 
-A Picsum-compatible image server for user supplied image databases.
+A more detailed implementation of the masonry algorithm which includes a caching image server for use with your own photo library. 
 
 
 
