@@ -33,13 +33,13 @@ These listings demonstrate the Computed HTML model by using it as a runtime for 
 
 ## Computed HTML 
 
-Computed HTML uses the innerHTML function to parse and render an arbitrarily complex layout within the nodes of a minimal DOM. The tags describing the layout are assembled with element attributes compiled inline. 
+Computed HTML uses the innerHTML function to insert and render an arbitrarily complex layout within the nodes of a minimal DOM. The tags describing the layout are assembled with necessary element attributes compiled inline. 
 
-Attributes may be drawn from cookies, variables, hardcoded data, XMLHttp requests, or the environment the code is executing in (such as the current display geometry).  
+Attributes may be drawn from cookies, variables, hardcoded data, XMLHttp requests, or the environment the code is executing in (such as the display geometry).  
 
-**Computed HTML is _fast_**. Sub-second TTIs are typical regardless of page complexity, because the browser's HTML interpreter is optimized for rendering DOMs from strings of layout tags. 
+**Computed HTML is _fast_**. Sub-second TTIs are typical regardless of page complexity, because the browser's HTML interpreter is optimized for rendering DOMs from a stream of layout tags. 
 
-Scripts are usually far more compact than the layouts they describe, and may be cached like any other static asset. This eliminates the need to send anything but the delta to the client, reducing bandwidth consumption 98% or more.   
+Scripts are usually more compact than the layouts they describe, and may be cached like any other static asset. This eliminates the need to send anything but the delta to the client, reducing bandwidth consumption by orders of magnitude.  
  
 
 ```
@@ -47,14 +47,14 @@ hello.html:
 
 ...
 <body>
-   <script src="script.js">
+   <script src="hello.js">
    <div id="greeting"></div>
 </body>
 ...
 
 ===
 
-script.js:
+hello.js:
 
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -105,7 +105,7 @@ next i
 gallery.innerHTML += array to string(chtml)
 ```
 
-####  Computed HTML output element @2x
+####  Computed HTML output element @2x quality
 ```
 chtml[i] = <div class="lozad brick" 
 style="top:1384px;left:61px;width:192px;height:144px;background-
@@ -122,11 +122,11 @@ By default, thumbnail images (tiles) are fetched at a multiple of the device pix
 
 There is very little documentation concerning best practices for rendering thumbnail photographs on HD displays, even Retina displays.
 
-Displaying all photos at 1x that aren't at least `display width * device pixel ratio` wide means leaving a lot of pixels on the table that might have been used to improve the rendition of other photos, not just the ones aligned to the device pixel ratio (which will vary from one device to the next).
+Displaying all photos at 1x that aren't at least `display width * device pixel ratio` wide means leaving a lot of pixels on the table that might have been used to improve the rendition of other photos, not just the ones aligned to the device pixel ratio (which varies from one device to the next).
 
 Splurge mode tries to pack as much detail into thumbnails as possible by finding the densest pixel ratio below the device pixel ratio that will fit.
 
-So if the device pixel ratio is 4 and the photo isn't wide enough for a 4x thumbnail, it will consider 3x, and then 2x before defaulting to 1x.
+So if the device pixel ratio is 4, but the photo isn't wide enough for a 4x thumbnail, it will consider 3x, and then 2x before defaulting to 1x.
 
 Set the constant `splurge = false` to disable this behavior.
 
