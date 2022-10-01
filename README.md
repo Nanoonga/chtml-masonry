@@ -99,7 +99,7 @@ next i
 gallery.innerHTML += array to string(chtml)
 ```
 
-####  Sample computed output element @2x
+####  Computed HTML output element @2x
 ```
 chtml[i] = <div class="lozad brick" 
 style="top:1384px;left:61px;width:192px;height:144px;background-
@@ -143,7 +143,7 @@ Picsum placeholders are fetched in 'seed' mode, that is, for an arbitrary seed v
 
 ## Working on
 
-A more detailed implementation of the masonry algorithm which includes a caching image server for use with your own photo library. 
+A version of the masonry algorithm with a PHP back end, caching image server, MySQL schema, and migration script for use with your own photo collection. 
 
 
 
