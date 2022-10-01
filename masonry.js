@@ -130,6 +130,10 @@ function fetch_page() {
     }               
 }
 
+function tile_url(id, size) {
+
+    return 'https://picsum.photos/seed/' + id + '/' + size;
+}
 
 function auto_paginate() {
 
@@ -183,9 +187,9 @@ function auto_paginate() {
 
                 q = (r>1 && images[i][0] >= img_width * r); 
          
-                tile_width = (q) ? Math.floor(img_width * r) : img_width;
+                tile_axis = Math.max(img_width, img_height);
 
-                tile_height = (q) ? Math.floor(img_height * r) : img_height;
+                tile_size = (q) ? Math.floor(tile_axis * r) : tile_axis;
 
                 chtml[i] = `<div class="lozad brick" style="top:${
                         column_height[j]
@@ -195,17 +199,13 @@ function auto_paginate() {
                         img_width
                     }px;height:${
                         img_height
-                    }px;background-image:url('https://picsum.photos/seed/${
-                        photo_counter
-                    }/${
-                        tile_width
-                    }/${
-                        tile_height
+                    }px;background-image:url('${
+                        tile_url(photo_counter,tile_size)
                     }');"><div class="brick-id">${ 
                         photo_counter + ((q) ? '&nbsp;' + r + 'x' : '') 
                     }</div></div>`;
 
-                // console.log(photo_counter, devicePixelRatio, r, images[i][0], img_width, tile_width);
+                // console.log(chtml[i]);
 
                 column_height[j] += img_height + gutter_size;
 
