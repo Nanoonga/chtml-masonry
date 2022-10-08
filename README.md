@@ -33,29 +33,27 @@ These listings demonstrate the Computed HTML model by using it as a runtime for 
 
 ## Computed HTML 
 
-Computed HTML uses the innerHTML function to insert and render an arbitrarily complex layout within the nodes of a minimal DOM. The tags describing the layout are assembled with necessary element attributes compiled inline. 
+Computed HTML is [element.innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) scaled to the application level.
+
+Arbitrarily complex layouts are generated in JavaScript and inserted into a minimal or empty DOM. The tags describing the layout are assembled with their attributes compiled inline. 
 
 Attributes may be drawn from cookies, variables, hardcoded data, XMLHttp requests, or the environment the code is executing in (such as the display geometry).  
 
-**Computed HTML is _fast_**. Sub-second TTIs are typical regardless of page complexity, because the browser's HTML interpreter is optimized for rendering DOMs from a stream of layout tags. 
-
-Scripts are usually more compact than the layouts they describe, and may be cached like any other static asset. This eliminates the need to send anything but the delta to the client, reducing bandwidth consumption by orders of magnitude.  
- 
+**Computed HTML is _fast_**. Sub-second TTIs are typical regardless of page complexity. Scripts are usually more compact than the layouts they describe, and may be cached like any other static asset. Once the cache is populated, only ephemeral data need be sent to the client.
 
 ```
 hello.html:
-
 ...
 <body>
    <script src="hello.js">
    <div id="greeting"></div>
 </body>
-...
+```
+---
 
-===
-
+```
 hello.js:
-
+...
 document.addEventListener("DOMContentLoaded", function(){
 
 	document.getElementById("greeting").innerHTML = [
