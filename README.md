@@ -43,7 +43,7 @@ Attributes may be drawn from cookies, variables, hardcoded data, XMLHttp request
 
 Sub-second TTIs are typical regardless of page complexity. Scripts are usually more compact than the layouts they describe, and may be cached like any other static asset. Once the browser cache is populated, only ephemeral data need be sent to the client.
 
-Bandwidth reduction and performance improvement is by orders of magnitude compared to traditional *[SSR]: Server Side Rendering / *[DHTML]: Dynamic HTML.
+Bandwidth reduction and performance improvement is by orders of magnitude compared to traditional SSR / DHTML.
 
 ```
 hello.html:
