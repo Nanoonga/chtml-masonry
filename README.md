@@ -33,13 +33,17 @@ These listings demonstrate the Computed HTML model by using it as a runtime for 
 
 ## Computed HTML 
 
-Computed HTML is [element.innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) scaled to the application level.
+Computed HTML is [element.innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) scaled to the page level.
 
 Arbitrarily complex layouts are generated in JavaScript and inserted into a minimal or empty DOM. The tags describing the layout are assembled with their attributes compiled inline. 
 
 Attributes may be drawn from cookies, variables, hardcoded data, XMLHttp requests, or the environment the code is executing in (such as the display geometry).  
 
-**Computed HTML is _fast_**. Sub-second TTIs are typical regardless of page complexity. Scripts are usually more compact than the layouts they describe, and may be cached like any other static asset. Once the cache is populated, only ephemeral data need be sent to the client.
+### Performance
+
+Sub-second TTIs are typical regardless of page complexity. Scripts are usually more compact than the layouts they describe, and may be cached like any other static asset. Once the browser cache is populated, only ephemeral data need be sent to the client.
+
+Bandwidth reduction and performance improvement is by orders of magnitude compared to traditional <abbr title="Server Side Rendering">SSR</abbr>/<abbr title="Dynamic HTML">DHTML</abbr>.
 
 ```
 hello.html:
@@ -48,10 +52,7 @@ hello.html:
    <script src="hello.js">
    <div id="greeting"></div>
 </body>
-```
----
 
-```
 hello.js:
 ...
 document.addEventListener("DOMContentLoaded", function(){
