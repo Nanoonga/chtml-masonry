@@ -102,6 +102,13 @@ const last_width = viewport_width,
 
     observer = lozad();
 
+var download_limit = 64;
+
+if(download_limit > 0) {
+
+    shapes = shapes.slice(0,download_limit);
+}
+
 
 var page_number = 0, 
 
@@ -182,25 +189,26 @@ function auto_paginate() {
                     r = (rdpr >= 2 && images[i][0] >= img_width * 2) ? 2 : r;
                 } 
 
-                q = (r>1 && images[i][0] >= img_width * r); 
-         
-                tile_axis = Math.max(img_width, img_height);
-
-                tile_size = (q) ? Math.floor(tile_axis * r) : tile_axis;
+                q = (r>1 && images[i][0] >= img_width * r);
 
                 chtml[i] = `<div class="lozad brick" style="top:${
-                        column_height[j]
-                    }px;left:${
-                        left_offset + gutter_size + (j * (img_width + gutter_size))
-                    }px;width:${
-                        img_width
-                    }px;height:${
-                        img_height
-                    }px;background-image:url('${
-                        'https://picsum.photos/seed/' + images[i][2] + '/' + tile_size
-                    }');"><div class="brick-id">${ 
-                        photo_counter + ((q) ? '&nbsp;' + r + 'x' : '') 
-                    }</div></div>`;
+                    column_height[j]
+                }px;left:${
+                    left_offset + gutter_size + (j * (img_width + gutter_size))
+                }px;width:${
+                    img_width
+                }px;height:${
+                    img_height
+                }px;background-image:url('https://picsum.photos/seed/${
+                    i+1
+                }/${
+                    img_width * r
+                }/${
+                    img_height * r
+                }');"><div class="brick-id">${ 
+                    photo_counter + ((q) ? '&nbsp;@' + r + '' : '')
+                }</div></div>`;
+
 
                 // console.log(chtml[i]);
 
